@@ -1,0 +1,37 @@
+body{
+    background-image: url("image/back2.jpg");
+}
+
+.focus{
+    width: 70%;
+    margin:0 auto;
+    height: 580px;
+    position: relative;
+    animation: focus 10s infinite;
+}
+
+@keyframes focus{
+0%{
+    background-image: url("image/banner1.jpg");
+    background-size:100% 100%;
+    margin:0 auto;
+}
+50%
+{
+    background-image: url("image/banner2.jpg");
+    background-size:100% 100%;
+    margin:0 auto;
+}
+100%
+{
+    background-image: url("image/banner3.jpg");
+    background-size:100% 100%;
+    margin:0 auto;
+}
+
+}
+
+
+
+
+
