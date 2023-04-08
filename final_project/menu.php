@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<?php session_start(); ?>
 <body> 
 <link rel="stylesheet" type="text/css" href="menu.css">
 
@@ -6,7 +7,15 @@
   <a href=""><img src="image/icon3.png" title="message" ></a>
   <a href=""><img src="image/icon2.png" title="shopping cart"></a>
   <a href=""><img src="image/icon1.png" title="user"></a>
-  <a href=""><img src="image/icon4.png" title="login"></a>
+  <?php if (!$_SESSION["login_session"])
+  {
+    echo "<a href='login.php'><img src='image/icon4.png' title='login'></a>";
+  }
+  else
+  {
+    echo "<a href='logout.php'><img src='image/icon4.png' title='login'></a>";
+  }
+  ?>
 </div>
 
 <div  style="text-align:center;">

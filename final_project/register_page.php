@@ -7,8 +7,6 @@
 <html>
 <?php session_start();
 
-if (!isset($_SESSION['user']))
-{
 ?>
 <head>
   <title>User Information</title>
@@ -87,13 +85,7 @@ if (!isset($_SESSION['user']))
     <center><input type="submit" name="submit" value="Submit"></center>
     <br>
   </form>
-  <?php }
-  else
-  {
-    //if session varible of user exist, not need to fill the info again
-    header("Location: create_cookie_and_session.php");
-  }
-  ?>
+
   <script>
     function formValidation() {
       var user = document.reg.user;   //create a variable to store the user's username 

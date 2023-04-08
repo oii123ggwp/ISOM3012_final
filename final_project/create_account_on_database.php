@@ -29,7 +29,7 @@ $link = @mysqli_connect(
 if ( mysqli_query($link, $insert_sql) ) {// run SQL statement
     echo "done";
     mysqli_close($link);  
-    //header("Location:");
+    header("Location: login.php");
 }
  else{
     die("fail to add user record into database!");
