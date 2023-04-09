@@ -1,0 +1,108 @@
+body{
+    background-image: url("image/back4.png");
+    background-size:cover;
+}
+
+*{
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+
+
+.box{
+  display:flex;
+  overflow: hidden;
+  width: 50rem;
+  height:30rem;
+  background-color:rgba(255,255,255,50%);
+  border-radius:1.5rem;
+  margin:8% auto;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.2);
+}
+
+.left{
+    position:relative;
+    width:65%;
+    height:100%;
+    background-image: url("image/baking.jpg");
+    background-size:cover;
+    opacity: 0.8;
+    transition:transform 0.5s;
+}
+
+.left:hover{
+    transform: scale(0.9);
+}
+
+.right h4{
+   color:#9F7F88;
+   font-size: 25px;
+   margin-top: 90px;
+   text-align:center;
+   margin-bottom: 25px;
+}
+
+.account{
+   outline:none;
+   width:60%;
+   height:34px;
+   font-size: 12px;
+   margin-top: 30px;
+   margin-left:85px;
+}
+
+.Login{
+   width: 30%;
+   height:30px;
+   margin-top: 45px;
+   margin-left:162px;
+   background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 90%);
+   font-size: 12px;
+   color: #b16f80;
+   border: none;
+   border-radius: 5px;
+}
+
+
+.link{
+text-align: right;
+margin-top: 35px;
+margin-right: 55px;
+}
+
+
+.link a{
+    text-decoration: none;
+    color: #B28BA3;
+    font-size: 16px;
+}
+    
+.link a:hover{
+    color: #83a38c;
+    font-weight: bold; 
+}
+
+.Login:hover{
+  transform: translateY(-6px);
+  box-shadow: 2px 2px 2px;
+    
+ }
+
+ .logo img{
+    float: right;
+    width: 40px;
+    height: 40px;
+    margin-top: 26px;
+    margin-right: -40px;
+    opacity: 0.7;
+ }
+
+
+
+
+
+
+
+

@@ -1,0 +1,106 @@
+body{
+    background-image: url("image/back2.jpg");
+}
+
+.focus{
+    width: 65%;
+    margin:0 auto;
+    height: 508px;
+    position: relative;
+    animation: focus 10s infinite;
+}
+
+@keyframes focus{
+0%{
+    background-image: url("image/banner1.jpg");
+    background-size:100% 100%;
+    border-radius: 15px;
+    margin:0 auto;
+    box-shadow: 12px 12px 12px rgba(0,0,0,0.5);
+}
+50%
+{
+    background-image: url("image/banner2.jpg");
+    background-size:100% 100%;
+    margin:0 auto;
+    border-radius: 15px;
+    box-shadow: 12px 12px 12px rgba(0,0,0,0.7);
+}
+100%
+{
+    background-image: url("image/banner3.jpg");
+    background-size:100% 100%;
+    border-radius: 15px;
+    margin:0 auto;
+    box-shadow: 12px 12px 12px rgba(0,0,0,0.7);
+}
+
+}
+
+.bar1{
+ list-style-type: none;
+ display: flex; 
+}
+
+.bar1 a{ 
+    font-size: 20px;
+    font-weight: 500px;
+    color:#736569;
+    margin:25px 80px;
+    transition:all 0.5s ease;
+    text-decoration: none;
+}
+
+.bar1 a:hover{
+    color: #ef7f9c;
+    font-weight: bold; 
+}
+
+.icon img{ 
+    margin:15px 20px;
+    width:18px;
+    height:18px;
+    float: right;
+    opacity: 0.6;
+}
+
+.icon img:hover{ 
+    opacity: 1.0;
+}
+
+
+
+.icons img{ 
+    margin-left: 32px;
+    margin-top: 20px;
+    width:30px;
+    height:30px;
+    
+}
+
+#footer{
+    width:100%;
+    background-color:rgba(231,231,231,0.7);
+    margin-top:70px;
+
+}
+
+.word{
+    color:#817c7d;
+    text-align: left;
+    font-size: 17px;
+}
+
+
+.copy{
+    color:#817c7d;
+    margin-top:-17px;
+    text-align: center;
+}
+
+.since{
+    color:#817c7d;
+    margin-top:10px;
+    text-align: center;
+}
+
