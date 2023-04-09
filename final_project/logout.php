@@ -1,3 +1,9 @@
+<!-- 
+   Author: 
+        php part: FONG IEK KIN BC000076
+        
+    Program description: this page is used to allow user to logout
+-->
 <?php 
 session_start();
 

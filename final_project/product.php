@@ -1,3 +1,11 @@
+<!-- 
+   Author: 
+        php part: FONG IEK KIN BC000076
+        data: 
+        
+   Program description: this page is used to display the product
+-->
+
 <!DOCTYPE html>
 <body> 
 <link rel="stylesheet" type="text/css" href="product.css">

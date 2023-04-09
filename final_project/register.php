@@ -3,11 +3,6 @@
 <link rel="stylesheet" type="text/css" href="register.css">
 <!DOCTYPE html>
 <html>
-<?php session_start();
-
-if (!isset($_SESSION['user']))
-{
-?>
 <head>
   <title>User Information</title>
 </head>
@@ -41,20 +36,14 @@ if (!isset($_SESSION['user']))
     <input class="signup" type="submit" name="submit" type="submit" value="Sign up">
     </form>
     <div class="link">
-    <a href="">Login</a>
+    <a href="login.php">Login</a>
     <div class="logo">
    <img src="image/logo.png"  ></div>
     </div>
 </div>
 </div>
 </form>
-  <?php }
-  else
-  {
-    //if session varible of user exist, not need to fill the info again
-    header("Location: create_cookie_and_session.php");
-  }
-  ?>
+
   <script>
     function formValidation() {
       var user = document.reg.user;   //create a variable to store the user's username 
