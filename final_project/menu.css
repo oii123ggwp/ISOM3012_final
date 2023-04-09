@@ -3,7 +3,7 @@ body{
 }
 
 .focus{
-    width: 70%;
+    width: 65%;
     margin:0 auto;
     height: 508px;
     position: relative;
@@ -52,7 +52,7 @@ body{
 }
 
 .bar1 a:hover{
-    color: #ef7f9c;;
+    color: #ef7f9c;
     font-weight: bold; 
 }
 
@@ -69,4 +69,38 @@ body{
 }
 
 
+
+.icons img{ 
+    margin-left: 32px;
+    margin-top: 20px;
+    width:30px;
+    height:30px;
+    
+}
+
+#footer{
+    width:100%;
+    background-color:rgba(231,231,231,0.7);
+    margin-top:70px;
+
+}
+
+.word{
+    color:#817c7d;
+    text-align: left;
+    font-size: 17px;
+}
+
+
+.copy{
+    color:#817c7d;
+    margin-top:-17px;
+    text-align: center;
+}
+
+.since{
+    color:#817c7d;
+    margin-top:10px;
+    text-align: center;
+}
 
