@@ -1,8 +1,3 @@
-<!-- 
-   Author: FONG IEK KIN BC000076
-   Program description: this page is used to allow user to log in their account
--->
-<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8" />
@@ -47,23 +42,39 @@ if ($user_id != "" && $password != "") {
    mysqli_close($link);    
 }
 ?>
-<form action="login.php" method="post">
-<table align="center" bgcolor="#FFCC99">
- <tr><td><font size="2">User ID:</font></td>
-   <td><input type="text" name="user_id"
-                size="15" maxlength="10" value = <?php echo $_POST["user_id"]?> >
-   </td></tr>
- <tr><td><font size="2">password:</font></td>
-   <td><input type="password" name="Password"
-              size="15" maxlength="10"/>
-   </td></tr>
- <tr><td colspan="2" align="center">
-   <input type="submit" value="Log In"/>
-   </td></tr>
-   <tr><td colspan="2" align="center">
-   <a href = "register_page.php">No account? Sign up here!</a>
-   </td></tr> 
-</table>
-</form>
-</body>
-</html>
+
+<link rel="stylesheet" type="text/css" href="login.css">
+
+<div class="box">
+   <div class="left"></div>
+   
+   <div class="right">
+    <h4>Login</h4>
+    <form action="login.php" method="post">
+    <input class="account" type="text" name="user_id" maxlength="10" value="<?php echo $_POST['user_id'];?>" placeholder="Username">
+    <input class="account" type="password" name="Password" maxlength="10" placeholder="Password">
+    <input class="Login" type="submit" value="Login">
+    </form>
+    <div class="link">
+    <a href="register.php">Register</a>
+    <div class="logo">
+   <img src="image/logo.png" ></div>
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
