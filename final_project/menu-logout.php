@@ -6,8 +6,8 @@
   <a href=""><img src="image/icon3.png" title="message" ></a>
   <a href=""><img src="image/icon2.png" title="shopping cart"></a>
   <a href=""><img src="image/icon1.png" title="user"></a>
-  <a href=""><img src="image/icon4.png" title="login"></a>
-</div>
+  <a href=""><img src="image/icon9.png" title="logout"></a>
+  </div>
 
 <div  style="text-align:center;">
 <br>
