@@ -19,6 +19,8 @@ $link = @mysqli_connect(
 
 $all_product_sql = "SELECT * FROM product";
 
+require 'record_click.php';
+
 ?>
 <body> 
 <link rel="stylesheet" type="text/css" href="product.css">
