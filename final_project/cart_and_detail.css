@@ -1,0 +1,454 @@
+* {
+	box-sizing: border-box;
+	font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
+	font-size: 16px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	position: relative;
+	min-height: 100%;
+	color: #1e1e1e;
+	background-color: #ffffff;
+	margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+	color: #512700;
+}
+
+.content-wrapper {
+	width: 88%;
+	margin: 0 auto;
+}
+
+header {
+	border-bottom: 1px solid #4a44449c;
+	background-color: #fecf57dd;
+}
+
+header .content-wrapper {
+	display: flex;
+}
+
+header h1 {
+	display: flex;
+	flex-grow: 1;
+	flex-basis: 0;
+	font-size: 34px;
+	margin: 0;
+	padding: 24px 0;
+}
+
+header.logo {
+	display: flex;
+	flex-grow: 1;
+	flex-basis: 0;
+
+}
+
+header nav {
+	display: flex;
+	flex-grow: 1;
+	flex-basis: 0;
+	justify-content: center;
+	align-items: center;
+}
+
+header nav a {
+	text-decoration: none;
+	font-size: 25px;
+	color: #231a11;
+	padding: 20px 20px;
+	margin: 0 10px;
+}
+
+header nav a:hover {
+	border-bottom: 1px solid #aaa;
+}
+
+header .link-icons {
+	display: flex;
+	flex-grow: 1;
+	flex-basis: 0;
+	justify-content: flex-end;
+	align-items: center;
+	position: relative;
+}
+
+header .link-icons a {
+	text-decoration: none;
+	color: #394352;
+	padding: 10px 10px;
+}
+
+header .link-icons a:hover {
+	color: #4e5c70;
+}
+
+header .link-icons a i {
+	font-size: 18px;
+}
+
+header .link-icons a span {
+	display: inline-block;
+	text-align: center;
+	background-color: #63748e;
+	border-radius: 50%;
+	color: #FFFFFF;
+	font-size: 12px;
+	line-height: 16px;
+	width: 16px;
+	height: 16px;
+	font-weight: bold;
+	position: absolute;
+	top: 22px;
+	right: 0;
+}
+
+.detail {
+	min-height: 100%;
+}
+
+main>.product {
+	display: flex;
+	padding: 70px 0;
+	width: 68%;
+	margin: 0 auto;
+	flex-flow: row wrap;
+}
+
+main>.product>div {
+	padding-left: 140px;
+}
+
+main>.product h1 {
+	font-size: 34px;
+	font-weight: heavy;
+	margin: 0;
+	padding: 20px 0 20px 0;
+}
+
+main>.product .price {
+	display: block;
+	font-size: 30px;
+	color: #4f4f4f;
+}
+
+main>.product form {
+	display: flex;
+	flex-flow: column;
+	margin: 40px 0;
+}
+
+main>.product form input[type="number"] {
+	width: 400px;
+	padding: 10px;
+	margin-bottom: 15px;
+	border: 1px solid #ff9d00;
+	color: #3d3d3d;
+	border-radius: 5px;
+	font-size: 20px;
+}
+
+main>.product form input[type="submit"] {
+	background: #ffce50dc;
+	border: 0;
+	color: #FFFFFF;
+	width: 400px;
+	padding: 12px 0;
+	text-transform: uppercase;
+	font-size: 20px;
+	font-weight: bold;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+main>.product form input[type="submit"]:hover {
+	background: #ffbe27;
+	overflow: clip;
+	transform: scale(1.1);
+	z-index: 1;
+}
+
+main>.product .description {
+	font-size: 26px;
+	font-weight: normal;
+	margin-top: 10px;
+	column-width: 400px;
+	max-width: 400px;
+	color:#312515;
+}
+
+/* Style the Image Used to Trigger the Modal */
+#proImg {
+	border-radius: 5px;
+	cursor: pointer;
+	transition: 0.3s;
+}
+
+#proImg:hover {
+	overflow: clip;
+	transform: scale(1.09);
+	z-index: 1;
+}
+
+/* The Modal (background) */
+.modal {
+	display: none;
+	/* Hidden by default */
+	position: fixed;
+	/* Stay in place */
+	z-index: 1;
+	/* Sit on top */
+	padding-top: 100px;
+	/* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%;
+	/* Full width */
+	height: 100%;
+	/* Full height */
+	overflow: auto;
+	/* Enable scroll if needed */
+	background-color: rgb(0, 0, 0);
+	/* Fallback color */
+	background-color: rgba(0, 0, 0, 0.9);
+	/* Black w/ opacity */
+}
+
+/* Modal Content (Image) */
+.modal-content {
+	margin: auto;
+	display: block;
+	width: 850%;
+	max-width: 800px;
+}
+
+/* Caption of Modal Image (Image Text) - Same Width as the Image */
+#caption {
+	margin: auto;
+	display: block;
+	width: 80%;
+	max-width: 700px;
+	text-align: center;
+	color: #ccc;
+	padding: 10px 0;
+	height: 150px;
+}
+
+/* Add Animation - Zoom in the Modal */
+.modal-content,
+#caption {
+	animation-name: zoom;
+	animation-duration: 0.7s;
+}
+
+@keyframes zoom {
+	from {
+		transform: scale(0)
+	}
+
+	to {
+		transform: scale(1)
+	}
+}
+
+/* The Close Button */
+.close {
+	position: absolute;
+	top: 15px;
+	right: 35px;
+	color: #f1f1f1;
+	font-size: 40px;
+	font-weight: bold;
+	transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+	color: #bbb;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px) {
+	.modal-content {
+		width: 100%;
+	}
+}
+
+
+main .cart h1 {
+	display: block;
+	font-weight:bold;
+	margin: 0;
+	padding: 40px 0;
+	font-size: 26px;
+	text-align: center;
+	width: 100%;
+}
+
+main .cart table {
+	width: 100%;
+}
+
+main .cart table thead td {
+	font-size: 24px;
+	padding: 30px 0;
+	border-bottom: 1px solid #EEEEEE;
+}
+
+main .cart table thead td:last-child {
+	text-align: right;
+	font-size: 24px;
+}
+
+main .cart table tbody td {
+	padding: 20px 0;
+	border-bottom: 1px solid #EEEEEE;
+	font-size: 24px;
+}
+
+main .cart table tbody td:last-child {
+	text-align: right;
+	font-size: 24px;
+}
+
+main .cart table .img {
+	width: 80px;
+}
+
+main .cart table .remove {
+	color: #777777;
+	font-size: 12px;
+	padding-top: 3px;
+}
+
+main .cart table .remove:hover {
+	text-decoration: underline;
+}
+
+main .cart table .price {
+	color: #999999;
+	font-size: 24px;
+}
+
+main .cart table a {
+	text-decoration: none;
+	color: #555555;
+}
+
+main .cart table input[type="number"] {
+	width: 68px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	color: #555555;
+	border-radius: 5px;
+}
+
+main .cart .subtotal {
+	text-align: right;
+	padding: 40px 0;
+}
+
+main .cart .subtotal .text {
+	padding-right: 40px;
+	font-size: 22px;
+}
+
+main .cart .subtotal .price {
+	font-size: 22px;
+	color: #555555;
+}
+
+main .cart .buttons {
+	text-align: right;
+	padding-bottom: 40px;
+}
+
+main .cart .buttons input[type="submit"] {
+	margin-left: 5px;
+	padding: 12px 20px;
+	border: 0;
+	background: #ffc74f;
+	color: #FFFFFF;
+	font-size: 16px;
+	font-weight: bold;
+	cursor: pointer;
+	border-radius: 5px;
+	transition: 0.3s;
+}
+
+main .cart .buttons input[type="submit"]:hover {
+	background: #ffbe27;
+	overflow: clip;
+	transform: scale(1.1);
+	z-index: 1;
+}
+
+main .placeorder h1 {
+	display: block;
+	font-weight: normal;
+	margin: 0;
+	padding: 40px 0;
+	font-size: 24px;
+	text-align: center;
+	width: 100%;
+}
+
+main .placeorder p {
+	text-align: center;
+}
+
+
+
+.icon img {
+	margin: 38px 20px 10px 20px;
+	width: 25px;
+	height: 25px;
+	float: right;
+	opacity: 0.7;
+}
+
+.icon img:hover {
+	opacity: 1.0;
+}
+
+.icons img {
+	margin-left: 32px;
+	margin-top: 20px;
+	width: 30px;
+	height: 30px;
+}
+
+#footer {
+	display: flexbox;
+	width: 100%;
+	background-color: #ffdb777d;
+	margin-top: 0;
+
+}
+
+.word {
+	color: #1d1d1d;
+	text-align: left;
+	font-size: 17px;
+}
+
+.copy {
+	color: #1d1d1d;
+	margin-top: -20px;
+	text-align: center;
+}

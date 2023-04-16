@@ -1,5 +1,6 @@
 body{
-    background-image: url("image/back1.gif");
+    background-image: url("image/back3.jpg");
+    background-size:cover;
 }
 
 .pic{
