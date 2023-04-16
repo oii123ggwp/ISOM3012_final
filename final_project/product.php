@@ -24,7 +24,7 @@ $all_product_sql = "SELECT * FROM product";
 <link rel="stylesheet" type="text/css" href="product.css">
 
 <div style="text-align:center;">
-<span style="font-family:cursive; font-size:40px; color:#4C6071">OUR PRODUCT<br></span>
+<span style="font-family:cursive;color:#A69B84;font-size:40px;">OUR PRODUCT<br></span>
 </div>
 
 <div class="pic">
@@ -38,8 +38,9 @@ $all_product_sql = "SELECT * FROM product";
    if ( $result = mysqli_query($link, $all_product_sql) ) { //checking error
       while( $row = mysqli_fetch_assoc($result) ){ 
          echo "<div class='row'>";
+         echo "<a href='product_detail.php?product_id=".$row['product_id']."'>";
          echo "<img src='image/".$row['product_img_path']."'>";
-         echo "<h4>".$row['product_name']."</h4>";
+         echo "<h4>".$row['product_name']."</h4></a>";
          echo "<h5>$".$row['product_price']."/pc</h5>";
          echo "</div>";
       }     
