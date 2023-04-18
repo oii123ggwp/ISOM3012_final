@@ -1,13 +1,65 @@
+<!---php part: FONG IEK KIN-->
 <!DOCTYPE html>
 <body> 
 <link rel="stylesheet" type="text/css" href="register.css">
 <!DOCTYPE html>
 <html>
+<?php
+session_start();
+$user_id = "";
+$error_msg = "";
+
+if(isset($_POST['submit'])){
+// obtain form data
+  if ( isset($_POST["user"]) )
+    $user_id = $_POST["user"];
+
+// check if user filled in username and password
+  if ($user_id != "") {
+   // connect to database
+    $link = mysqli_connect("localhost","root",
+                            "A12345678","cakeshop")
+                  or die("Cannot open MySQL database connection!<br/>");
+
+
+    // define sql string
+    $sql = "SELECT * FROM user WHERE ";
+    $sql.= "user_id='".$user_id."'";
+    // execute SQL command
+    $result = mysqli_query($link, $sql);
+    $total_records = mysqli_num_rows($result);
+    // check if login data matched with database
+    if ( $total_records == 0 ) {
+      $password = $_POST["pass"];
+      $hash = password_hash($password, PASSWORD_DEFAULT);
+      
+      //create a string about a sql statement which is used to insert a user record
+      $insert_sql = "INSERT INTO user (user_id, password, person_name, birthday, gender, email, phone_number) VALUES (?, ?, ?, ?, ?, ?, ?)";
+      $add_stmt = $link->prepare($insert_sql);
+      $add_stmt->bind_param("sssssss",$_POST["user"],$hash,$_POST["name"],$_POST["birthday"],$_POST["gender"],$_POST["email"],$_POST["phone_number"]);
+    
+      $add_stmt->execute();
+    
+      $add_stmt->close();
+      $link->close();
+    
+      header("Location: menu.php");
+    } 
+    else {  // login fails
+    
+      $error_msg = "<font color='red'>user name exist! Need a new one!<br/></font>";
+
+    }
+    mysqli_close($link);    
+  }
+}
+
+?>
 <head>
   <title>User Information</title>
 </head>
 
-  <form name="reg" onsubmit = "return formValidation();" method = "post" action = "create_account_on_database.php">
+  <form name="reg" onsubmit = "return formValidation();" method = "post" action = "register.php">
 <div class="box">
   <div class="empty"></div>
    <div class="register"><h4><br>Register</h4></div>
@@ -15,7 +67,7 @@
    <div class="infor">
     <form>
     Username:&ensp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" id="user" name="user" size="20" placeholder="Letters and Numbers Only"><br><br>
+    <input type="text" id="user" name="user" size="20" placeholder="Letters and Numbers Only"><br><?php echo $error_msg ?><br>
     Password:&ensp;&thinsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="password" id="pass" name="pass" size="23" placeholder="6-15 characters"><p style="line-height: 0.4; font-size:x-small;font-weight:300;color:#E05273;">(at least 1 number, 1 Uppercase letter and 1 lowercase letter)</p><br>
 
@@ -58,7 +110,8 @@
       var hobby = document.reg.hobby; //create a variable to store the user's hobbies
       var foodstyle = document.reg.foodstyle;  //create a variable to store the user's favourite food style
       var subject = document.reg.subject;  //create a variable to store the user's favourite subject
-     
+      var phone = document.reg.phone_number; //create a variable to store the user's phone number
+
       //Validation is performed in order. If the input are all corrected, then it will return true.
       //If one input is incorrect, it will return false and ask the user to modify.
       
@@ -68,13 +121,13 @@
             if (name_valid(name)) {
               if (birthday_valid(birthday)) {
                 if (gender_valid(gender)) {
-                  if (country_valid(country)) {
-                    if (address_valid(address)) {
+                  if (country_valid()) {
+                    if (address_valid()) {
                       if (email_valid(email)) {
-                        if (color_valid(color)) {
+                        if (color_valid()) {
                           if (hobby_valid()) {
                             if (food_valid()) {
-                              if (subject_valid()) {
+                              if (phone_Valid(phone)) {
                                 
                                 return true;  
                               }
@@ -212,24 +265,15 @@
       } else
         return true;//otherwise, return true
     }
-    function country_valid(country) { // function used to verify contry selection
-      if (country.value == "Default") { //if not select, alert, focus and return false
-        alert('Please select your Country from the list');
-        country.focus();
-        return false;
-      } else {
+    function country_valid() { // function used to verify contry selection
+
         return true;//otherwise, return true
-      }
+
     }
-     function address_valid(address) {// function used to verify address
-      if (!address.value) { // if empty, alert and focus
-        alert("Please input your Address!");
-        address.focus();
-        return false;
-      } else {
+     function address_valid() {// function used to verify address
         return true;//otherwise, return true
-      }
     }
+
     function email_valid(email) { // function used to verify email
       var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
       if (email.value.match(mailformat)) {//if the user input meet the format, return true
@@ -240,42 +284,37 @@
         return false;
       }
     }
-    function color_valid(color) { //function used to verify color selection
-      if (color.value == "Default") { //if not select, alert focus and return false
-        alert('Select your favourate color from the list');
-        color.focus();
+    function phone_Valid(phone) { //function used to validate the user name written in letters and numbers
+      var letters = /^[0-9]+$/;
+      if (!phone.value) { //if not input, alert to input user name and focus
+        alert("Please input your phone number!");
+        phone.focus();
         return false;
-      } else {
-        return true;//otherwise, return true
+      } else if (phone.value.match(letters)) { //if written in letters, return true
+        return true;
+      } else { //otherwise alert to input letters and focus
+        alert('Phone number must only have numeric digits only!');
+        phone.focus();
+        return false;
       }
+    }
+
+    function color_valid() { //function used to verify color selection
+
+        return true;//otherwise, return true
     }
     function hobby_valid() { //function used to verify the hobby selection
-      //if not select any options, alert and return false
-      if (document.forms["reg"]["hobby[]"].selectedIndex == -1) {
-        alert("Please select your hobbies.");
-        return false;
-      } else {
+
         return true;//otherwise, return true
-      }
     }
     function food_valid() { //function used to verify foodstyle selection
-      if (document.forms["reg"]["foodstyle[]"].selectedIndex == -1) {
-        //if not select any options, alert and return false
-        alert("Please select foodstyles you like.");
-        return false;
-      } else {
+
         return true;//otherwise, return true
-      }
+
     }
     function subject_valid() { //function used to verify drinkstyle selection
-      if (document.forms["reg"]["subject[]"].selectedIndex == -1) {
-        //if not select any options, alert and return false
-        alert("Please select subjects you like.");
-        return false;
-      } else {
-        alert("Form upload successfully!")
+
         return true; //otherwise, return true
-      }
     }
     var today = new Date(); //create a variable to store the Date object
     var dd = today.getDate(); //create a variable to store the day

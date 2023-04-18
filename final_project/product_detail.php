@@ -87,7 +87,7 @@ if (isset($_GET['product_id'])) {
                 <span class="price">
                     &dollar;<?= $product['product_price'] ?>
                 </span>
-                <form action="shopping_cart.php" method="post">
+                <form action="create_shopping_cookie.php" method="post">
                     <input type="number" name="quantity" value="1" min="1" max="<?= $product['quantity_in_stock'] ?>" placeholder="Quantity" required>
                     <input type="hidden" name="product_id" value="<?= $product['product_id'] ?>">
                     <input type="submit" value="Add To Cart">
