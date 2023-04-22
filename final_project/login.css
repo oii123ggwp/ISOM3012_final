@@ -10,6 +10,26 @@ box-sizing: border-box;
 }
 
 
+.icon img:hover{ 
+    opacity: 1.0;
+  }
+  
+  .icon img{ 
+    float: right;
+    margin-top: -100px;
+    margin-left: 18px;
+    margin-right: 18px;
+    margin-bottom: 83px;
+    width:18px;
+    height:18px;
+    opacity: 0.6;
+  
+  }
+  
+
+
+
+
 
 .box{
   display:flex;
@@ -19,6 +39,7 @@ box-sizing: border-box;
   background-color:rgba(255,255,255,50%);
   border-radius:1.5rem;
   margin:8% auto;
+  margin-left: 420px;
   box-shadow: 10px 10px 10px rgba(0,0,0,0.2);
 }
 

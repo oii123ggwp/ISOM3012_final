@@ -60,6 +60,11 @@ if(isset($_POST['submit'])){
 </head>
 
   <form name="reg" onsubmit = "return formValidation();" method = "post" action = "register.php">
+
+  <div class="icon">  
+  <a href=""><img src="image/icon10.png" title="menu"></a>
+  </div>
+
 <div class="box">
   <div class="empty"></div>
    <div class="register"><h4><br>Register</h4></div>

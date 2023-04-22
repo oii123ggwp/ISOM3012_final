@@ -1,3 +1,9 @@
+/*	CSS for: shopping_cart.php
+			 product_detail.php
+			 header_footer.php
+
+	Author: ZHENG BOWEN Owen	*/
+
 * {
 	box-sizing: border-box;
 	font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
@@ -18,17 +24,24 @@ body {
 	margin: 0;
 }
 
+h1{
+	font-family:cursive;
+}
+
+
+
 h1,
 h2,
 h3,
 h4,
 h5 {
-	color: #512700;
+	color: #83795e;
 }
 
 .content-wrapper {
 	width: 88%;
 	margin: 0 auto;
+	height: 100%;
 }
 
 header {
@@ -44,7 +57,7 @@ header h1 {
 	display: flex;
 	flex-grow: 1;
 	flex-basis: 0;
-	font-size: 34px;
+	font-size: 30px;
 	margin: 0;
 	padding: 24px 0;
 }
@@ -290,14 +303,37 @@ main>.product .description {
 }
 
 
+.shoppingcart{
+	background-image:url('image/back6.jpg');
+	background-size: cover;
+	
+}
+
+
+.icon img{ 
+	float: right;
+	margin-left: 18px;
+	margin-right: 18px;
+    margin-top: 10px;
+    margin-bottom: -40px;
+	opacity: 0.6;
+  
+  }
+  
+  .icon img:hover{ 
+	opacity: 1.0;
+  }
+
+
 main .cart h1 {
 	display: block;
 	font-weight:bold;
-	margin: 0;
 	padding: 40px 0;
-	font-size: 26px;
+	font-size: 32px;
 	text-align: center;
 	width: 100%;
+	margin-left:40px;
+	margin-bottom:-25px;
 }
 
 main .cart table {
@@ -307,7 +343,8 @@ main .cart table {
 main .cart table thead td {
 	font-size: 24px;
 	padding: 30px 0;
-	border-bottom: 1px solid #EEEEEE;
+	border-bottom: 2px solid #ffffff;
+	color: #512700;
 }
 
 main .cart table thead td:last-child {
@@ -316,9 +353,10 @@ main .cart table thead td:last-child {
 }
 
 main .cart table tbody td {
-	padding: 20px 0;
-	border-bottom: 1px solid #EEEEEE;
+	padding: 15px 0;
+	border-bottom: 1px solid #ffffff;
 	font-size: 24px;
+	color: #581c00;
 }
 
 main .cart table tbody td:last-child {
@@ -327,36 +365,151 @@ main .cart table tbody td:last-child {
 }
 
 main .cart table .img {
-	width: 80px;
+	width: 85px;
+}
+
+main .cart table img{
+	border-radius: 10%;
+	border:1px solid #ff9d0052;
+	transition: 0.1s;
+}
+
+main .cart table img:hover{
+	box-shadow: 0 0 2px 1px #ff9d00;
+	overflow: clip;
+	transform: scale(1.2);
+	z-index: 1;
+}
+
+main .cart table .to_product{
+	font-size: 20px;
+	color: #462506;
 }
 
 main .cart table .remove {
-	color: #777777;
-	font-size: 12px;
+	color: #a4452f;
+	font-size: 18px;
 	padding-top: 3px;
 }
 
 main .cart table .remove:hover {
 	text-decoration: underline;
+	color: #e14d12;
 }
 
+main .cart table .requirement input[type="text"]{
+	font-size: 20px;
+	color: #512700;
+	border: 2px solid #ff9d00;
+    border-radius: 5px;
+	width: 200px;
+	height: 45px;
+}
+
+main .cart table .requirement input[type="text"]:hover{
+	overflow: clip;
+	transform: scale(1.1);
+	z-index: 1;
+	transition: 0.15s;
+}
+main .cart table .requirement input[type="text"]:focus {
+	background-color: rgba(249, 241, 194, 0.956);
+	width: 90%;
+	transition: width 0.4s ease-in-out;
+}
 main .cart table .price {
-	color: #999999;
+	color: #581c00;
 	font-size: 24px;
 }
 
 main .cart table a {
 	text-decoration: none;
-	color: #555555;
+	color: #581c00;
 }
 
 main .cart table input[type="number"] {
 	width: 68px;
 	padding: 10px;
-	border: 1px solid #ccc;
-	color: #555555;
-	border-radius: 5px;
+	border: 2px solid #ff9d00;
+    border-radius: 5px;
+	color: #581c00;
+	transition: 0.15s;
 }
+
+main .cart table input[type="number"]:hover{
+	overflow: clip;
+	transform: scale(1.1);
+	z-index: 1;
+}
+
+main .deliver{
+	text-align: left;
+	padding: 40px 0;
+}
+main .deliver .text{
+	padding-right: 10px;
+	font-size: 24px;
+	color: #512700;
+}
+main .deliver input[type='date']{
+	height:45px;
+	position: relative;
+	border: 2px solid #ff9d00;
+    border-radius: 5px;
+	transition: 0.15s;
+}
+main .deliver input[type='date']::-webkit-calendar-picker-indicator {
+	position: absolute;
+	right: 0;
+	padding-left: calc(100% - 40px);
+	padding-right: 10px;
+}
+
+main .deliver input[type="date"]:hover{
+	overflow: clip;
+	transform: scale(1.1);
+	z-index: 1;
+}
+ 
+main .deliver input[type="time"] {
+	position: relative;
+	width: 100px;
+	border: 2px solid #ff9d00;
+    border-radius: 5px;
+	transition: 0.15s;
+	padding-left: 10px;
+}
+
+main .deliver input[type='time']::-webkit-calendar-picker-indicator {
+	position: absolute;
+	right: 0;
+	padding-left: calc(100% - 40px);
+	padding-right: 10px;
+}
+
+main .deliver input[type="time"]:hover{
+	overflow: clip;
+	transform: scale(1.1);
+	z-index: 1;
+}
+
+main .deliver input + span {
+	padding-right: 20px;
+}
+  
+main .deliver input:invalid + span::after {
+	position: absolute;
+	content: "✖";
+	padding-left: 5px;
+}
+  
+main .deliver input:valid + span::after {
+	position: absolute;
+	content: "✓";
+	padding-left: 5px;
+}
+  
+
 
 main .cart .subtotal {
 	text-align: right;
@@ -365,36 +518,43 @@ main .cart .subtotal {
 
 main .cart .subtotal .text {
 	padding-right: 40px;
-	font-size: 22px;
+	font-size: 28px;
+	color: #581c00;
 }
 
 main .cart .subtotal .price {
 	font-size: 22px;
-	color: #555555;
+	color: #462506;
+}
+
+main .cart .subtotal .total{
+	font-size: 24px;
+	color: #462506;
 }
 
 main .cart .buttons {
 	text-align: right;
-	padding-bottom: 40px;
+	padding: 40px 0px;
 }
 
 main .cart .buttons input[type="submit"] {
 	margin-left: 5px;
 	padding: 12px 20px;
 	border: 0;
-	background: #ffc74f;
+	background:#ffbe27;
 	color: #FFFFFF;
-	font-size: 16px;
+	font-size: 20px;
 	font-weight: bold;
 	cursor: pointer;
 	border-radius: 5px;
-	transition: 0.3s;
+	transition: 0.25s;
 }
 
 main .cart .buttons input[type="submit"]:hover {
-	background: #ffbe27;
+	box-shadow: 0 0 2px 1px #ff9d00;
+	background:#ff9d00;
 	overflow: clip;
-	transform: scale(1.1);
+	transform: scale(1.16);
 	z-index: 1;
 }
 
@@ -414,15 +574,15 @@ main .placeorder p {
 
 
 
-.icon img {
-	margin: 38px 20px 10px 20px;
-	width: 25px;
-	height: 25px;
+.icon1 img {
+	margin: 20px 20px 5px 20px;
+	width: 18px;
+	height: 18px;
 	float: right;
 	opacity: 0.7;
 }
 
-.icon img:hover {
+.icon1 img:hover {
 	opacity: 1.0;
 }
 
@@ -436,7 +596,7 @@ main .placeorder p {
 #footer {
 	display: flexbox;
 	width: 100%;
-	background-color: #ffdb777d;
+	background-color: #ffdb777c;
 	margin-top: 0;
 
 }

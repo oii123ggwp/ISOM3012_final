@@ -7,6 +7,7 @@
 -->
 
 <!DOCTYPE html>
+<title>Search Product</title>
 <?php 
 // set up MySQL database connection 
 $link = @mysqli_connect( 
@@ -19,30 +20,43 @@ $link = @mysqli_connect(
 
 $all_product_sql = "SELECT * FROM product";
 
-require 'record_click.php';
-
 ?>
 <body> 
-<link rel="stylesheet" type="text/css" href="product.css">
 
+<link rel="stylesheet" type="text/css" href="search_product.css">
+
+<div class="icon">  
+  <a href=""><img src="image/icon9.png" title="logout"></a>
+  <a href="contact_us.php"><img src="image/icon3.png" title="message" ></a>
+  <a href="shopping_cart.php"><img src="image/icon2.png" title="shopping cart"></a>
+  <a href="user.php"><img src="image/icon1.png" title="user"></a>
+  <a href="menu.php"><img src="image/icon10.png" title="menu"></a>
+  </div>
+<br><br>
 <div style="text-align:center;">
-<span style="font-family:cursive; font-size:40px; color:#4C6071">OUR PRODUCT<br></span>
+<span style="font-family:cursive; font-size:40px; color:#75776b">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Product Searching</span><br><br>
 </div>
+    <div class="box1">
+        <div class="box">
+            <img src="image/cake_banner2.jpg" alt="">
+            <img src="image/cake_banner5.jpg" alt="">
+            <img src="image/cake_banner1.jpg" alt="">
+            <img src="image/cake_banner4.jpg" alt="">
+            <img src="image/cake_banner3.jpg" alt="">
+        </div>
+    </div>
 
-<div class="pic">
-<br>
-<img src="image/cake3.jpg">
-</div>
+</body>
 <div>
    <!--
       if user click one of the submit button, the page will show the product related to the submit name
    -->
    <form method = "post" action = "search_product.php">
-   <input type = "submit" name = "cartoon" value = "cartoon">&nbsp;
-   <input type = "submit" name = "fruit" value = "fruit">&nbsp;
-   <input type = "submit" name = "chocolate" value = "chocolate">&nbsp;
-   <input type = "submit" name = "traditional" value = "traditional">&nbsp;
-   <input type = "submit" name = "wedding" value = "wedding">
+   <input class="cartoon" type="submit" name="cartoon" value="Cartoon">&nbsp;
+   <input class="fruit" type = "submit" name = "fruit" value = "Fruit">&nbsp;
+   <input class="chocolate" type = "submit" name = "chocolate" value = "Chocolate">&nbsp;
+   <input class="traditional" type = "submit" name = "traditional" value = "Traditional">&nbsp;
+   <input class="wedding" type = "submit" name = "wedding" value = "Wedding">
    </form>
 </div>
 <div class="product">

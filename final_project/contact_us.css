@@ -1,0 +1,40 @@
+body {
+    background: url("image/cake_back.png") no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+  }
+
+  .icon img{ 
+    float: right;
+    margin-left: 18px;
+    margin-right: 18px;
+   margin-top: 10px;
+   margin-bottom: 20px;
+    width:18px;
+    height:18px;
+    opacity: 0.6;
+  
+  }
+  
+  .icon img:hover{ 
+    opacity: 1.0;
+  }
+
+.send{
+  width: 10%;
+  height:30px;
+  margin-top: 30px;
+  margin-left:60px;
+  background-image: linear-gradient(to right, #e0cf9b 0%, #b38b46 90%);
+  font-size: 18px;
+  color: #5f391e;
+  border: none;
+  border-radius: 5px;
+  -webkit-transition-duration: 0.4s; /* Safari */
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+.send:hover{
+transform: translateY(-6px);
+box-shadow: 2px 2px 2px;
+}

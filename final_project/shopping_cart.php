@@ -1,4 +1,6 @@
+<!--    shopping_cart.php   -->
 
+<!-- Author: ZHENG BOWEN Owen -->
 <?php
 session_start();
 $DATABASE_HOST = 'localhost';
@@ -17,7 +19,7 @@ $result_rows = $All_product_stm->fetchAll(PDO::FETCH_ASSOC);//convert the result
 
 $shopping_cart_products = array();//a array which store the record of product which is in the shopping cart
 $shopping_cart_quantity = array();//a array which store the quantity of product which is in the shopping cart
-$_SESSION['subtotal'] = 0.00;
+$_SESSION['total'] = 0.00;
 
 foreach($result_rows as $record)//get one record from the result
 {
@@ -47,8 +49,8 @@ foreach($result_rows as $record)//get one record from the result
 }
 
 
-?>
 
+?>
 
 <?php include 'header_footer.php' ?>
 <!DOCTYPE html>
@@ -62,6 +64,7 @@ foreach($result_rows as $record)//get one record from the result
 </head>
 
 <body>
+    <!--
     <header>
         <div class="content-wrapper">
             <div class="logo">
@@ -77,27 +80,41 @@ foreach($result_rows as $record)//get one record from the result
                 <a href="shopping_cart.php"><img src="image/icon2.png" title="shopping cart"></a>
                 <a href=""><img src="image/icon1.png" title="user"></a>
                 <?php
-                if (isset($_SESSION['user_id'])) {
-                    echo "<a href='logout.php'><img src='image/icon9.png' title='logout'></a>";
+                /*if (isset($_SESSION['user_id'])) {
+                    echo "<a href='login.php'><img src='image/icon4.png' title='login'></a>";
+                }else
+                {
+                  echo "<a href='logout.php'><img src='image/icon9.png' title='logout'></a>";
                 }
-                    
+                */    
                 ?>
             </div>
-
         </div>
     </header>
-    <main>
+            -->
+<main class="shoppingcart">
+
+<div class="icon1">  
+<a href=""><img src="image/icon9.png" title="logout"></a>
+  <a href="contact_us.php"><img src="image/icon3.png" title="message" ></a>
+  <a href="shopping_cart.php"><img src="image/icon2.png" title="shopping cart"></a>
+  <a href="user.php"><img src="image/icon1.png" title="user"></a>
+  <a href="menu.php"><img src="image/icon10.png" title="menu"></a>
+  </div>
 
 <div class="cart content-wrapper">
+    <br>
     <h1>Shopping Cart</h1>
-    <form action="shopping_cart.php" method="post">
+    <form onsubmit="aler()" method="post">
         <table>
             <thead>
                 <tr>
                     <td colspan="2">Product</td>
                     <td>Price</td>
                     <td>Quantity</td>
-                    <td>Total</td>
+                    <td>Date</td>
+                    <td>Special Requirment</td>
+                    <td>Subtotal</td>
                 </tr>
             </thead>
             <tbody>
@@ -110,11 +127,11 @@ foreach($result_rows as $record)//get one record from the result
                 <tr>
                     <td class="img">
                         <a href="product_detail.php?product_id=<?=$product['product_id']?>">
-                            <img src="image/<?=$product['product_img_path']?>" width="50" height="50" alt="<?=$product['product_name']?>">
+                            <img src="image/<?=$product['product_img_path']?>" width="75" height="75" alt="<?=$product['product_name']?>">
                         </a>
                     </td>
                     <td>
-                        <a href="product_detail.php?product_id=<?=$product['product_id']?>"><?=$product['product_name']?></a>
+                        <a href="product_detail.php?product_id=<?=$product['product_id']?>" class="to_product"><?=$product['product_name']?></a>
                         <br>
                         <a href="remove_shopping_cart_cookie.php?remove=<?=$product['product_id']?>" class="remove">Remove</a>
                     </td>
@@ -122,27 +139,65 @@ foreach($result_rows as $record)//get one record from the result
                     <td class="quantity">
                         <input class = "quan" type="number" id="<?=$product['product_id']?>" value="<?=$shopping_cart_quantity[$product['product_id']]?>" min="1" max="<?=$product['quantity_in_stock']?>" placeholder="Quantity" onchange = "change_total()" required>
                     </td>
+                    
+                    <td class="deliver">
+                        <input type="date" id="deliver_date" name="deliver_date" min="2020-01-01" required>
+                    </td>
+                    <td class="requirement">
+                        <input class="req" type="text">
+                    </td>
                     <td class="subtotal" id="price-<?=$product['product_id']?>">&dollar;<?=$product['product_price'] * $shopping_cart_quantity[$product['product_id']]?></td>
                 </tr>
                 <?php
-                    $_SESSION['subtotal'] += $product['product_price'] * $shopping_cart_quantity[$product['product_id']];            
+                    $_SESSION['total'] += $product['product_price'] * $shopping_cart_quantity[$product['product_id']];            
                     endforeach; ?>
                 <?php endif; ?>
             </tbody>
         </table>
         <div class="subtotal">
-            <span class="text">Subtotal</span>
-            <span class="total" id = "total">&dollar;<?=$_SESSION['subtotal']?></span>
-        </div>
+            <span class="text">Total</span>
+            <span class="total" id = "total">&dollar;<?=$_SESSION['total']?></span>
+       <!--  </div>
+        
+            
+           
+            <input type="time" id="deliver_time" name="deliver_time" min="10:00" max="20:00" required/>
+            <span class="validity"></span>
+            <span class="text"> (10:00-20:00)</span>
+               
+        </div> -->
         <div class="buttons">
-            <input type="submit" value="Update" name="update">
             <input type="submit" value="Place Order" name="placeorder">
         </div>
     </form>
 </div>
 <script>
 
-    //fong iek kin
+    function aler(){
+        alert("We have taken your order, thank you for your patronage! Please pay and collect the cakes at the shop on your selected dates.");      
+    }
+    /*
+    // to disable select date before tomorrow
+    var tomorrow = new Date();//create a variable to store the Date object
+    var dd = tomorrow.getDate() + 1; //create a variable to store the day
+    var mm = tomorrow.getMonth() + 1; //create a variable to store the month
+    var yyyy = tomorrow.getFullYear(); //create a variable to store the year
+    if (dd < 10) { 
+      dd = '0' + dd
+    }
+    if (mm < 10) {
+      mm = '0' + mm
+    }
+    //set the date format
+    tomorrow = yyyy + '-' + mm + '-' + dd;
+    // here shows that date before tomorrow not allowed
+    document.getElementById("deliver_date").setAttribute("min", tomorrow);
+    */
+
+
+
+
+    // Function Author: fong iek kin
     function change_total()//to change subtotal and total in shopping cart if the quantity is changed
     {
         iprice = document.getElementsByClassName("price");
@@ -166,5 +221,6 @@ foreach($result_rows as $record)//get one record from the result
         itotal.innerText = "$"+total_result
     }
 </script>
-
-<?=template_footer()?>
+</main>
+</body>
+</html>
