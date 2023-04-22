@@ -4,10 +4,7 @@
 <link rel="stylesheet" type="text/css" href="menu.css">
 
 <div class="icon">
-  <a href=""><img src="image/icon3.png" title="message" ></a>
-  <a href=""><img src="image/icon2.png" title="shopping cart"></a>
-  <a href=""><img src="image/icon1.png" title="user"></a>
-  <?php
+<?php
   if(!$_SESSION["login_session"])
   {
     echo "<a href='login.php'><img src='image/icon4.png' title='login'></a>";
@@ -17,6 +14,11 @@
     echo "<a href='logout.php'><img src='image/icon9.png' title='logout'></a>";
   }
   ?>
+<a href="contact_us.php"><img src="image/icon3.png" title="message" ></a>
+  <a href="shopping_cart.php"><img src="image/icon2.png" title="shopping cart"></a>
+  <a href="user.php"><img src="image/icon1.png" title="user"></a>
+  <a href="menu.php"><img src="image/icon10.png" title="menu"></a>
+
   </div>
 
 <div  style="text-align:center;">
@@ -45,10 +47,10 @@
       <a href="product.php">Products</a>
     </li>
     <li class="item">
-      <a href="">Search</a>
+      <a href="search_product.php">Search</a>
     </li>
     <li class="item">
-      <a href="">FAQ</a>
+      <a href="FAQ.php">FAQ</a>
     </li>
   </ul>
 <br>

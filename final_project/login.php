@@ -59,7 +59,16 @@ if ($user_id != "" && $password != "") {
 <body> 
 <link rel="stylesheet" type="text/css" href="login.css">
 
+<div class="icon">  
+<a href="contact_us.php"><img src="image/icon3.png" title="message" ></a>
+  <a href="shopping_cart.php"><img src="image/icon2.png" title="shopping cart"></a>
+  <a href="user.php"><img src="image/icon1.png" title="user"></a>
+  <a href="menu.php"><img src="image/icon10.png" title="menu"></a>
+  </div>
+
+
 <div class="box">
+   <br><br>
    <div class="left"></div>
    
    <div class="right">

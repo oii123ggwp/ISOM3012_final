@@ -72,7 +72,7 @@ if (isset($_GET['product_id'])) {
     <main class="detail" style="background:url(image/back4.png);background-repeat:no-repeat; background-size:cover;">
         <div class="product content-wrapper">
     
-            <img id="proImg" src="image/<?= $product['product_img_path'] ?>" width="500" height="500" alt="<?= $product['product_name'] ?>">
+            <img id="proImg" src="image/<?= $product['product_img_path2'] ?>" width="500" height="500" alt="<?= $product['product_name'] ?>">
             <!-- The Modal -->
             <div id="myModal" class="modal">
                 <!-- The Close Button -->

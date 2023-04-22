@@ -1,0 +1,92 @@
+body{
+    background-image: url("image/woman.jpg");
+    background-size:cover;
+}
+
+*{
+box-sizing: border-box;
+position: relative;
+}
+
+.icon img:hover{ 
+  opacity: 1.0;
+}
+
+.icon img{ 
+  float: right;
+  margin-top: -75px;
+  margin-left: 18px;
+  margin-right: 18px;
+  margin-bottom: 90px;
+  width:18px;
+  height:18px;
+  opacity: 0.6;
+
+}
+
+
+.box{
+  width:545px;
+  height:560px;
+  background-color:rgba(255,255,255,60%);
+  border-radius:1.5rem;
+  margin-left: 900px;
+  box-shadow: 10px 10px 10px rgba(0,0,0,0.1);
+}
+
+.user h4{
+   color:#7582a7;
+   font-size: 30px;
+   margin-top: 100px;
+   margin-left: 42px;
+   text-align:center;
+   margin-bottom: 40px;
+}
+
+
+.infor{
+    font-size: 17px;
+    margin-left:90px;
+    margin-top:40px;
+    color: #63877c;
+}
+
+
+.cancel{
+   width: 20%;
+   height:30px;
+   margin-top: 30px;
+   margin-left:70px;
+   background-image: linear-gradient(45deg, #e9dbfe, #f8d4ed, #fad7df, #feddd0);
+   font-size: 12px;
+   color:#857c6a;
+   border: none;
+   border-radius: 5px;
+
+}
+
+.modify{
+    width: 20%;
+    height:30px;
+    margin-top: 30px;
+    margin-left: 140px;
+    background-image: linear-gradient(45deg,#feddd0, #fad7df, #f8d4ed,#e9dbfe);
+    font-size: 12px;
+    color: #857c6a;
+    border: none;
+    border-radius: 5px;
+ }
+
+
+
+.modify:hover{
+  transform: translateY(-6px);
+  box-shadow: 2px 2px 2px;
+    
+ }
+
+ .cancel:hover{
+  transform: translateY(-6px);
+  box-shadow: 2px 2px 2px;
+    
+ }
