@@ -67,6 +67,7 @@ $all_product_sql = "SELECT * FROM product";
       if ( $result = mysqli_query($link, $selected_product_sql) ) { //checking error
          while( $row = mysqli_fetch_assoc($result) ){ //show the result on the page
             echo "<div class='row'>";
+            echo "<a href='product_detail.php?product_id=".$row['product_id']."'>";
             echo "<img src='image/".$row['product_img_path']."'>";
             echo "<h4>".$row['product_name']."</h4>";
             echo "<h5>$".$row['product_price']."/pc</h5>";
@@ -81,6 +82,7 @@ $all_product_sql = "SELECT * FROM product";
       if ( $result = mysqli_query($link, $selected_product_sql) ) { //checking error
          while( $row = mysqli_fetch_assoc($result) ){ //show the result on the page
             echo "<div class='row'>";
+            echo "<a href='product_detail.php?product_id=".$row['product_id']."'>";
             echo "<img src='image/".$row['product_img_path']."'>";
             echo "<h4>".$row['product_name']."</h4>";
             echo "<h5>$".$row['product_price']."/pc</h5>";
@@ -95,6 +97,7 @@ $all_product_sql = "SELECT * FROM product";
       if ( $result = mysqli_query($link, $selected_product_sql) ) { //checking error
          while( $row = mysqli_fetch_assoc($result) ){ //show the result on the page
             echo "<div class='row'>";
+            echo "<a href='product_detail.php?product_id=".$row['product_id']."'>";
             echo "<img src='image/".$row['product_img_path']."'>";
             echo "<h4>".$row['product_name']."</h4>";
             echo "<h5>$".$row['product_price']."/pc</h5>";
@@ -109,6 +112,7 @@ $all_product_sql = "SELECT * FROM product";
       if ( $result = mysqli_query($link, $selected_product_sql) ) { //checking error
          while( $row = mysqli_fetch_assoc($result) ){ //show the result on the page
             echo "<div class='row'>";
+            echo "<a href='product_detail.php?product_id=".$row['product_id']."'>";
             echo "<img src='image/".$row['product_img_path']."'>";
             echo "<h4>".$row['product_name']."</h4>";
             echo "<h5>$".$row['product_price']."/pc</h5>";
@@ -123,6 +127,7 @@ $all_product_sql = "SELECT * FROM product";
       if ( $result = mysqli_query($link, $selected_product_sql) ) { //checking error
          while( $row = mysqli_fetch_assoc($result) ){ //show the result on the page
             echo "<div class='row'>";
+            echo "<a href='product_detail.php?product_id=".$row['product_id']."'>";
             echo "<img src='image/".$row['product_img_path']."'>";
             echo "<h4>".$row['product_name']."</h4>";
             echo "<h5>$".$row['product_price']."/pc</h5>";
