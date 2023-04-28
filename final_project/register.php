@@ -42,7 +42,7 @@ if(isset($_POST['submit'])){
     
       $add_stmt->close();
       $link->close();
-      
+    
       header("Location: menu.php");
     } 
     else {  // login fails

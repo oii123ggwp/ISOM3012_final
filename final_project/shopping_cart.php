@@ -1,6 +1,7 @@
 <!--    shopping_cart.php   -->
 
-<!-- Author: ZHENG BOWEN Owen -->
+<!-- Authors: ZHENG BOWEN Owen. 
+     Modified by: FONG IEK KIN -->
 <?php
 session_start();
 $DATABASE_HOST = 'localhost';
@@ -29,7 +30,7 @@ foreach($result_rows as $record)//get one record from the result
     {
         if($id == $record['product_id'])//check if the cookie name related to product id
         {
-            foreach ($array  as $name => $value)//get the content of product cookie array
+            foreach ($array as $name => $value)//get the content of product cookie array
             {
                 if($value == $record['product_id'])//check if there is product id exist
                 {
@@ -48,8 +49,6 @@ foreach($result_rows as $record)//get one record from the result
     }
 }
 
-
-
 ?>
 
 <?php include 'header_footer.php' ?>
@@ -61,6 +60,13 @@ foreach($result_rows as $record)//get one record from the result
     <title>shopping_cart</title>
     <link href="cart_and_detail.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+    <?php
+    if(isset($_GET["error_shopping_cart"])){
+        echo'<script>alert("'.$_GET['error_shopping_cart'].'")</script>';
+    }
+    $now_plus_two_days = strtotime("+3 days");
+
+    ?>
 </head>
 
 <body>
@@ -105,7 +111,7 @@ foreach($result_rows as $record)//get one record from the result
 <div class="cart content-wrapper">
     <br>
     <h1>Shopping Cart</h1>
-    <form onsubmit="aler()" method="post">
+    <form onsubmit="aler()" method="post" action = "inert_transaction_into_database.php">
         <table>
             <thead>
                 <tr>
@@ -137,11 +143,11 @@ foreach($result_rows as $record)//get one record from the result
                     </td>
                     <td class="price">&dollar;<?=$product['product_price']?></td>
                     <td class="quantity">
-                        <input class = "quan" type="number" id="<?=$product['product_id']?>" value="<?=$shopping_cart_quantity[$product['product_id']]?>" min="1" max="<?=$product['quantity_in_stock']?>" placeholder="Quantity" onchange = "change_total()" required>
+                        <input class = "quan" type="number" id="<?=$product['product_id']?>" name = "<?=$product['product_id']?>" value="<?=$shopping_cart_quantity[$product['product_id']]?>" min="0" max="<?=$product['quantity_in_stock']?>" placeholder="Quantity" onchange = "change_total()" required><!---->
                     </td>
                     
                     <td class="deliver">
-                        <input type="date" id="deliver_date" name="deliver_date" min="2020-01-01" required>
+                        <input type="date" id="deliver_date" name="deliver_date_<?=$product['product_id']?>" min="<?php echo date("Y-m-d", $now_plus_two_days) ?>" value = <?php echo date("Y-m-d", $now_plus_two_days) ?> required><!---->
                     </td>
                     <td class="requirement">
                         <input class="req" type="text">
@@ -171,28 +177,59 @@ foreach($result_rows as $record)//get one record from the result
         </div>
     </form>
 </div>
-<script>
+<!-- The Modal -->
+        <div id="myModal" class="modal">
+            <!-- The Close Button -->
+            <span class="close">&times;</span>
+            <div id="thank-content">
+                <!-- Modal Text -->
+                <div class="thank-text" id="thank">
+                    We have taken your order, thank you for your patronage!<br>
+                    Please pay and collect the cakes in the shop on your selected date.
+                </div>
+            </div>
 
-    function aler(){
-        alert("We have taken your order, thank you for your patronage! Please pay and collect the cakes at the shop on your selected dates.");      
-    }
-    /*
-    // to disable select date before tomorrow
-    var tomorrow = new Date();//create a variable to store the Date object
-    var dd = tomorrow.getDate() + 1; //create a variable to store the day
-    var mm = tomorrow.getMonth() + 1; //create a variable to store the month
-    var yyyy = tomorrow.getFullYear(); //create a variable to store the year
-    if (dd < 10) { 
-      dd = '0' + dd
-    }
-    if (mm < 10) {
-      mm = '0' + mm
-    }
-    //set the date format
-    tomorrow = yyyy + '-' + mm + '-' + dd;
-    // here shows that date before tomorrow not allowed
-    document.getElementById("deliver_date").setAttribute("min", tomorrow);
-    */
+            <script>
+                // Get the modal
+                var modal = document.getElementById("myModal");
+
+                // Get the submit button 
+                var button = document.getElementById("button");
+
+                function thank() {
+                    modal.style.display = "block";
+                }
+
+                // Get the <span> element that closes the modal
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks on <span> (x), close the modal
+                span.onclick = function() {
+                    modal.style.display = "none";
+                }
+
+
+                // to disable select date before tomorrow
+                var tomorrow = new Date(); //create a variable to store the Date object
+                tomorrow.setDate(tomorrow.getDate() + 2);
+                var dd = tomorrow.getDate(); //create a variable to store the day
+                var mm = tomorrow.getMonth() + 1; //create a variable to store the month
+                var yyyy = tomorrow.getFullYear(); //create a variable to store the year
+                if (dd < 10) {
+                    dd = '0' + dd
+                }
+                if (mm < 10) {
+                    mm = '0' + mm
+                }
+                //set the date format
+                tomorrow = yyyy + '-' + mm + '-' + dd;
+                // difine var dates by classname 
+                let dates = document.getElementsByClassName("deliver_date");
+                // Loop through the NodeList
+                for (var i = 0; i < dates.length; i++) {
+                    // Set date only after tomorrow allowed with each element
+                    dates[i].setAttribute("min", tomorrow);
+                }
 
 
 

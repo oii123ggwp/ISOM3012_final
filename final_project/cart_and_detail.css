@@ -1,5 +1,5 @@
 /*	CSS for: shopping_cart.php
-			 product_detail.php
+			 product.php
 			 header_footer.php
 
 	Author: ZHENG BOWEN Owen	*/
@@ -20,14 +20,10 @@ body {
 	position: relative;
 	min-height: 100%;
 	color: #1e1e1e;
-	background-color: #ffffff;
+	background-image: url("image/back3.jpg");
+	background-size:cover;
 	margin: 0;
 }
-
-h1{
-	font-family:cursive;
-}
-
 
 
 h1,
@@ -135,13 +131,13 @@ header .link-icons a span {
 main>.product {
 	display: flex;
 	padding: 70px 0;
-	width: 68%;
+	width: 88%;
 	margin: 0 auto;
 	flex-flow: row wrap;
 }
 
-main>.product>div {
-	padding-left: 140px;
+main>.product>#infor {
+	padding-left: 110px;
 }
 
 main>.product h1 {
@@ -153,8 +149,14 @@ main>.product h1 {
 
 main>.product .price {
 	display: block;
-	font-size: 30px;
-	color: #4f4f4f;
+	font-size: 32px;
+	color: #37332a;
+}
+
+main>.product .stock{
+	display: block;
+	font-size: 26px;
+	color: #37332a;
 }
 
 main>.product form {
@@ -205,14 +207,15 @@ main>.product .description {
 
 /* Style the Image Used to Trigger the Modal */
 #proImg {
-	border-radius: 5px;
+	border-radius: 4%;
 	cursor: pointer;
 	transition: 0.3s;
 }
 
 #proImg:hover {
+	box-shadow: 2px 2px 5px 3px #ff9d00;
 	overflow: clip;
-	transform: scale(1.09);
+	transform: scale(1.1);
 	z-index: 1;
 }
 
@@ -236,9 +239,33 @@ main>.product .description {
 	/* Enable scroll if needed */
 	background-color: rgb(0, 0, 0);
 	/* Fallback color */
-	background-color: rgba(0, 0, 0, 0.9);
+	background-color: rgba(0, 0, 0, 0.853);
 	/* Black w/ opacity */
 }
+
+#thank-content{
+	border-radius: 20px;
+	margin: auto;
+	display: block;
+	width: 75%;
+	height: 80%;
+	background-image: url("image/thank.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+/* thank-text*/
+.thank-text{
+	display: block;
+	color:#1c1c1c;
+	font-size: 30px;
+	font-weight: bold;
+	max-width: 46%;
+	text-align: center;
+	padding-left: 120px;
+	padding-top: 200px;
+}
+
 
 /* Modal Content (Image) */
 .modal-content {
@@ -303,9 +330,62 @@ main>.product .description {
 }
 
 
+.black_overlay {
+
+	display: none;
+	position: absolute;
+	top: 0%;
+	left: 0%;
+	width: 100%;
+	height: 100%;
+	background-color: #22222298;
+	z-index: 1001;
+	-moz-opacity: 0.8;
+	opacity: .80;
+	filter: alpha(opacity=78);
+}
+
+.pop_win {
+
+	display: none;
+	width: 80%;
+	height: 720px;
+	padding: 10px;
+	border: 2px solid #ffa514;
+	background-color: white;
+	z-index: 9999;
+	overflow: auto;
+	border-radius: 25px;
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.fancybox-button {
+
+	background: rgba(255, 203, 99, 0.74);
+	border: 0;
+	border-radius: 20%;
+	box-shadow: none;
+	cursor: pointer;
+	display: inline-block;
+	height: 44px;
+	margin: 0;
+	padding: 10px;
+	position: relative;
+	transition: color .2s;
+	vertical-align: top;
+	visibility: inherit;
+	width: 50px;
+}
+
+
+
 .shoppingcart{
 	background-image:url('image/back6.jpg');
 	background-size: cover;
+	background-repeat: no-repeat;
 	
 }
 
@@ -315,14 +395,89 @@ main>.product .description {
 	margin-left: 18px;
 	margin-right: 18px;
     margin-top: 10px;
-    margin-bottom: -40px;
+    margin-bottom: -15px;
+	width:18px;
+	height:18px;
 	opacity: 0.6;
   
-  }
+}
   
-  .icon img:hover{ 
+.icon img:hover{ 
 	opacity: 1.0;
-  }
+}
+
+.icon img:hover{ 
+  opacity: 1.0;
+}
+
+.search{
+  margin-left: 620px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.pic{
+    overflow: hidden;
+}
+
+
+.pic img{
+    border-radius: 10px;
+    width:89%;
+    height:320px;
+    display:block;
+    margin:0 auto;
+    transition:transform 0.5s;
+    cursor:pointer;
+}
+
+.pic:hover img{
+    transform: scale(1.1);
+}
+
+.product {
+  max-width:1380px;
+  margin:0 auto ;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(300px,auto));
+  align-items: center;
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.row{
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+  padding: 10px 10px;
+  background-color: white;
+  box-shadow: 0.2rem 0.3rem #c7c7c7;
+}
+
+.row a{
+  text-decoration: none;
+}
+
+.row img{
+  width: 300px;
+  height: 350px;
+  margin-bottom: 0.1rem;
+}
+
+.row h4{
+ font-size: 18px;
+ margin-bottom: 0.1rem;
+ font-weight: 400;
+ color:#38647A;
+}
+
+.row h5{
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom:10px;
+    font-weight: 400;
+    color:#DE7075;
+}
 
 
 main .cart h1 {

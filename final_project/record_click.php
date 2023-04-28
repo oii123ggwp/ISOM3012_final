@@ -1,5 +1,7 @@
+<!--
+    author: FONG IEK KIN BC000076
+-->
 <?php
-
 function record_click(string $P_ID){
 // set up MySQL database connection 
     $link = @mysqli_connect( 

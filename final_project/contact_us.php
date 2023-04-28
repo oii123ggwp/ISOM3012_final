@@ -1,5 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+<?php
+
+$servername = "localhost";
+$database = "cakeshop";
+$username = "root";
+$password = "A12345678";
+// set up MySQL database connection 
+$conn = mysqli_connect($servername, $username, $password, $database);
+// Check Connection
+if (!$conn) {
+  // If there is an error with the connection, stop the script and display the error.
+    die("Connection failed");
+}
+
+$now = date("Y-m-d");
+/*Check if you have submitted the name of the person leaving the message or the content.*/
+if (isset($_POST['name']) || isset($_POST['comment'])) {
+    $name=$_POST['name'];
+    $content=$_POST['comment'];
+    $email=$_POST['email'];
+
+    $get_all_F_reocrd_sql = "SELECT * FROM feedback";
+    $F_records = mysqli_query($conn, $get_all_F_reocrd_sql);
+    $total_records = mysqli_num_rows($F_records);
+    $F_id = "F".$total_records;
+
+    //insert sql statment
+    $sql = "INSERT INTO feedback (feedback_id, name, email, message, create_time) VALUES (?, ?, ?, ?, ?)";
+    
+    $add_stmt = $conn->prepare($sql);
+    $add_stmt->bind_param("sssss",$F_id,$name,$email,$content,$now);
+    //run sql
+    $add_stmt->execute();
+    //close sql statment
+    $add_stmt->close();
+    //close database connection
+    $conn->close();
+
+}
+
+?>
 <head>
   <meta charset="utf-8">
   <!-- set title -->
@@ -33,7 +74,7 @@ function ShowBanner(){
 <center>
 <span style="font-family:system-ui; font-size:23px; color:#5f391e">Thanks for reaching out, please leave your comments and we will reply you with below information!</span>
 </center>
-<form name="reg" onsubmit = "return formValidation();" method = "post"><br><br>
+<form name="reg" onsubmit = "return formValidation();" method = "post" action = "contact_us.php"><br><br>
 <center>
 <span style="font-family:cursive; font-size:18px; color:#5f391e"><strong>&nbsp;&nbsp;&nbsp;&nbsp;Name:</strong></span>
 <input type="text" id="name" name="name" size="44"><br><br>
