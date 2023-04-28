@@ -1,7 +1,6 @@
 <!--    shopping_cart.php   -->
 
-<!-- Authors: ZHENG BOWEN Owen. 
-     Modified by: FONG IEK KIN -->
+<!-- Author: ZHENG BOWEN Owen -->
 <?php
 session_start();
 $DATABASE_HOST = 'localhost';
@@ -30,7 +29,7 @@ foreach($result_rows as $record)//get one record from the result
     {
         if($id == $record['product_id'])//check if the cookie name related to product id
         {
-            foreach ($array as $name => $value)//get the content of product cookie array
+            foreach ($array  as $name => $value)//get the content of product cookie array
             {
                 if($value == $record['product_id'])//check if there is product id exist
                 {
@@ -48,6 +47,8 @@ foreach($result_rows as $record)//get one record from the result
         }
     }
 }
+
+
 
 ?>
 
@@ -104,7 +105,7 @@ foreach($result_rows as $record)//get one record from the result
 <div class="cart content-wrapper">
     <br>
     <h1>Shopping Cart</h1>
-    <form onsubmit="aler()" method="post" action = "inert_transaction_into_database.php">
+    <form onsubmit="aler()" method="post">
         <table>
             <thead>
                 <tr>
@@ -136,11 +137,11 @@ foreach($result_rows as $record)//get one record from the result
                     </td>
                     <td class="price">&dollar;<?=$product['product_price']?></td>
                     <td class="quantity">
-                        <input class = "quan" type="number" id="<?=$product['product_id']?>" name = "<?=$product['product_id']?>" value="<?=$shopping_cart_quantity[$product['product_id']]?>" min="1" max="<?=$product['quantity_in_stock']?>" placeholder="Quantity" onchange = "change_total()" required><!---->
+                        <input class = "quan" type="number" id="<?=$product['product_id']?>" value="<?=$shopping_cart_quantity[$product['product_id']]?>" min="1" max="<?=$product['quantity_in_stock']?>" placeholder="Quantity" onchange = "change_total()" required>
                     </td>
                     
                     <td class="deliver">
-                        <input type="date" id="deliver_date" name="deliver_date_<?=$product['product_id']?>" min="2020-01-01" required><!---->
+                        <input type="date" id="deliver_date" name="deliver_date" min="2020-01-01" required>
                     </td>
                     <td class="requirement">
                         <input class="req" type="text">
