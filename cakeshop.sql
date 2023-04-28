@@ -21,8 +21,6 @@ SET time_zone = "+00:00";
 --
 -- 資料庫： `cakeshop`
 --
-CREATE DATABASE IF NOT EXISTS `cakeshop` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `cakeshop`;
 
 -- --------------------------------------------------------
 
@@ -76,21 +74,21 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`product_id`, `product_name`, `product_price`, `product_img_path`, `product_description`, `Type`, `quantity_in_stock`, `being_click`, `product_img_path2`) VALUES
-('P001', 'CARTOON CAKE-SNOWFLAKE', '240', 'cartoon2.jpg', 'This is a blueberry-flavored sponge cake with a strawberry jam filling.', 'cartoon', 10, 0, 'cartoon2-snow.jpg'),
-('P002', 'CARTOON CAKE-ROCKET', '220', 'cartoon1.jpg', 'This is a crispy chocolate cake with sponge cake inside and blueberry jam.', 'cartoon', 10, 0, 'cartoon1-roc.jpg'),
+('P001', 'CARTOON CAKE-SNOWFLAKE', '240', 'cartoon2.jpg', 'This is a blueberry-flavored sponge cake with a strawberry jam filling.', 'cartoon', 8, 2, 'cartoon2-snow.jpg'),
+('P002', 'CARTOON CAKE-ROCKET', '220', 'cartoon1.jpg', 'This is a crispy chocolate cake with sponge cake inside and blueberry jam.', 'cartoon', 4, 3, 'cartoon1-roc.jpg'),
 ('P003', 'FRUITCAKE-BLUEBERRY', '185', 'fruit1.jpg', 'A sponge cake that fill with blueberries and has a deliciously soft and tender crumb with a slight hint of lemon. ', 'fruit', 10, 0, 'fruit1-blueberry.jpg'),
-('P004', 'FRUITCAKE-PINEAPPLE', '155', 'fruit2.jpg', 'A moist cake with rich pineapple flavor topped with a fluffy whipped vanilla buttercream frosting and finished with slices of pineapple.', 'fruit', 10, 0, 'fruit2-pine.jpg'),
+('P004', 'FRUITCAKE-PINEAPPLE', '155', 'fruit2.jpg', 'A moist cake with rich pineapple flavor topped with a fluffy whipped vanilla buttercream frosting and finished with slices of pineapple.', 'fruit', 8, 1, 'fruit2-pine.jpg'),
 ('P005', 'FRUITCAKE-STRAWBERRY', '190', 'fruit3.jpg', 'Moist white cream cake with fresh strawberry.', 'fruit', 10, 0, 'fruit3-straw.jpg'),
-('P006', 'FRUITCAKE-ORANGE', '180', 'fruit4.jpg', 'Made of torn phyllo dough sheets and a mixture of orange juice, Greek yogurt and sugar. A cinnamon syrup is poured over the cooled cake.', 'fruit', 10, 0, 'fruit4-orange.jpg'),
+('P006', 'FRUITCAKE-ORANGE', '180', 'fruit4.jpg', 'Made of torn phyllo dough sheets and a mixture of orange juice, Greek yogurt and sugar. A cinnamon syrup is poured over the cooled cake.', 'fruit', 10, 1, 'fruit4-orange.jpg'),
 ('P007', 'CHOCOLATE CAKE', '200', 'chocolate1.jpg', 'a mousse cake that has a chocolate flavor and chocolate frosting.', 'chocolate', 10, 0, 'chocolate1-choco.jpg'),
-('P008', 'CHOCOLATE PEANUT CAKE', '195', 'chocolate2.jpg', 'A moist chocolate cake with a peanut butter frosting.', 'chocolate', 10, 0, 'chocolate2-peanut.jpg'),
-('P009', 'CHOCOLATE PEAR CAKE', '216', 'chocolate3.jpg', 'A moist chocolate cake made with fresh pears, cinnamon, nutmeg, vanilla and cocoa powder. It is generously coated with cinnamon sugar.', 'chocolate', 10, 0, 'chocolate3-pear.jpg'),
+('P008', 'CHOCOLATE PEANUT CAKE', '195', 'chocolate2.jpg', 'A moist chocolate cake with a peanut butter frosting.', 'chocolate', 10, 1, 'chocolate2-peanut.jpg'),
+('P009', 'CHOCOLATE PEAR CAKE', '216', 'chocolate3.jpg', 'A moist chocolate cake made with fresh pears, cinnamon, nutmeg, vanilla and cocoa powder. It is generously coated with cinnamon sugar.', 'chocolate', 9, 1, 'chocolate3-pear.jpg'),
 ('P010', 'SOUR CREAM POUND CAKE', '125', 'traditional1.jpg', 'A dense, melt-in-your-mouth cake with a subtle vanilla-flavored crumb. We use less egg and comes out with a lighter exterior.', 'traditional', 10, 0, 'traditional1-sour.jpg'),
-('P011', 'OLIVE OIL CAKE', '140', 'traditional2.jpg', 'A light and barely sweet cake, a final brush of olive oil just before serving brings the fruity flavor to the front of your palate as soon as you take a bite', 'traditional', 10, 0, 'traditional2-oil.jpg'),
+('P011', 'OLIVE OIL CAKE', '140', 'traditional2.jpg', 'A light and barely sweet cake, a final brush of olive oil just before serving brings the fruity flavor to the front of your palate as soon as you take a bite', 'traditional', 8, 2, 'traditional2-oil.jpg'),
 ('P012', 'VICTORIA SPONGE CAKE', '140', 'traditional3.jpg', 'A sponge cake is a soft cake and made in two layers with jam or cream, or both, between them.', 'traditional', 10, 0, 'traditional3-vic.jpg'),
 ('P013', 'ROSE CAKE', '205', 'wedding1.jpg', 'A rose cake is a cake flavored with rose water and paired with a rose buttercream. It is fittingly decorated with cream flowers', 'wedding', 10, 0, 'wedding1-cake.jpg'),
-('P014', 'ROYAL WEDDING CAKE', '200', 'wedding3.jpg', 'A rose cake is a cake flavored with rose water and paired with a rose buttercream. It is fittingly decorated with cream flowers', 'wedding', 10, 0, 'wedding3-cake.jpg'),
-('P015', 'LAVENDER CAKE', '225', 'wedding2.jpg', 'A three-tier sponge cake, is a moist layer cake flavored with vanilla tea.', 'wedding', 10, 0, 'wedding2-cake.jpg');
+('P014', 'ROYAL WEDDING CAKE', '200', 'wedding3.jpg', 'A rose cake is a cake flavored with rose water and paired with a rose buttercream. It is fittingly decorated with cream flowers', 'wedding', 8, 2, 'wedding3-cake.jpg'),
+('P015', 'LAVENDER CAKE', '225', 'wedding2.jpg', 'A three-tier sponge cake, is a moist layer cake flavored with vanilla tea.', 'wedding', 9, 1, 'wedding2-cake.jpg');
 
 -- --------------------------------------------------------
 
@@ -106,7 +104,8 @@ CREATE TABLE `transaction` (
   `quantity` int(100) NOT NULL,
   `total_payment_amount` int(20) NOT NULL,
   `order_time` date NOT NULL,
-  `finish_time` date NOT NULL,
+  `expected_finish_time` date NOT NULL,
+  `finish_time` date DEFAULT NULL,
   `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -114,17 +113,31 @@ CREATE TABLE `transaction` (
 -- 傾印資料表的資料 `transaction`
 --
 
-INSERT INTO `transaction` (`transaction_id`, `user_id`, `product_id`, `payment_method`, `quantity`, `total_payment_amount`, `order_time`, `finish_time`, `status`) VALUES
-('T0', 'gG12345', 'P001', 'unset', 1, 240, '2023-04-24', '2023-04-04', 'NULL'),
-('T1', 'gG12345', 'P002', 'unset', 1, 220, '2023-04-24', '2023-04-04', 'NULL'),
-('T2', 'submitA11', 'P005', 'unset', 1, 190, '2023-04-25', '2023-04-04', 'NULL'),
-('T3', 'submitA11', 'P006', 'unset', 2, 360, '2023-04-25', '2023-04-05', 'NULL'),
-('T4', 'submitA11', 'P005', 'unset', 1, 190, '2023-04-25', '2023-04-04', 'NULL'),
-('T5', 'submitA11', 'P006', 'unset', 2, 360, '2023-04-25', '2023-04-05', 'NULL'),
-('T6', 'submitA11', 'P005', 'unset', 1, 190, '2023-04-25', '2023-04-04', 'NULL'),
-('T7', 'submitA11', 'P006', 'unset', 2, 360, '2023-04-25', '2023-04-05', 'NULL'),
-('T8', 'submitA11', 'P005', 'unset', 1, 190, '2023-04-25', '2023-04-04', 'NULL'),
-('T9', 'ff011121', 'P003', 'unset', 3, 555, '2023-04-28', '2023-04-06', 'NULL');
+INSERT INTO `transaction` (`transaction_id`, `user_id`, `product_id`, `payment_method`, `quantity`, `total_payment_amount`, `order_time`, `expected_finish_time`, `finish_time`, `status`) VALUES
+('92faf398-e5da-11ed-b', 'submitA11', 'P014', 'unset', 2, 400, '2023-04-28', '2023-05-01', NULL, 'unfihished'),
+('T0', 'gG12345', 'P001', 'unset', 1, 240, '2023-04-24', '0000-00-00', '2023-04-04', 'NULL'),
+('T1', 'gG12345', 'P002', 'unset', 1, 220, '2023-04-24', '0000-00-00', '2023-04-04', 'NULL'),
+('T10', 'ff011121', 'P003', 'unset', 2, 0, '2023-04-28', '0000-00-00', '2023-04-13', 'NULL'),
+('T11', 'ff011121', 'P003', 'unset', 2, 370, '2023-04-28', '0000-00-00', '2023-04-13', 'NULL'),
+('T12', 'ff011121', 'P001', 'unset', 1, 240, '2023-04-28', '0000-00-00', '2023-04-12', 'NULL'),
+('T13', 'ff011121', 'P004', 'unset', 1, 155, '2023-04-28', '0000-00-00', '2023-05-02', 'NULL'),
+('T14', 'ff011121', 'P001', 'unset', 1, 240, '2023-04-28', '0000-00-00', '2023-04-11', 'NULL'),
+('T15', 'ff011121', 'P002', 'unset', 2, 440, '2023-04-28', '0000-00-00', '2023-04-22', 'NULL'),
+('T16', 'submitA11', 'P004', 'unset', 1, 155, '2023-04-28', '0000-00-00', '2023-04-26', 'NULL'),
+('T17', 'submitA11', 'P011', 'unset', 1, 140, '2023-04-28', '0000-00-00', '2023-04-26', 'NULL'),
+('T18', 'submitA11', 'P015', 'unset', 1, 225, '2023-04-28', '0000-00-00', '2023-05-03', 'NULL'),
+('T19', 'submitA11', 'P002', 'unset', 3, 660, '2023-04-28', '0000-00-00', '2023-04-18', 'NULL'),
+('T2', 'submitA11', 'P005', 'unset', 1, 190, '2023-04-25', '0000-00-00', '2023-04-04', 'NULL'),
+('T20', 'submitA11', 'P009', 'unset', 1, 216, '2023-04-28', '0000-00-00', '2023-04-13', 'NULL'),
+('T21', 'submitA11', 'P002', 'unset', 1, 220, '2023-04-28', '0000-00-00', '2023-04-11', 'NULL'),
+('T22', 'submitA11', 'P011', 'unset', 1, 140, '2023-04-28', '2023-05-01', NULL, 'unfihished'),
+('T3', 'submitA11', 'P006', 'unset', 2, 360, '2023-04-25', '0000-00-00', '2023-04-05', 'NULL'),
+('T4', 'submitA11', 'P005', 'unset', 1, 190, '2023-04-25', '0000-00-00', '2023-04-04', 'NULL'),
+('T5', 'submitA11', 'P006', 'unset', 2, 360, '2023-04-25', '0000-00-00', '2023-04-05', 'NULL'),
+('T6', 'submitA11', 'P005', 'unset', 1, 190, '2023-04-25', '0000-00-00', '2023-04-04', 'NULL'),
+('T7', 'submitA11', 'P006', 'unset', 2, 360, '2023-04-25', '0000-00-00', '2023-04-05', 'NULL'),
+('T8', 'submitA11', 'P005', 'unset', 1, 190, '2023-04-25', '0000-00-00', '2023-04-04', 'NULL'),
+('T9', 'ff011121', 'P003', 'unset', 3, 555, '2023-04-28', '0000-00-00', '2023-04-06', 'NULL');
 
 -- --------------------------------------------------------
 
