@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
--- 主机： localhost
--- 生成日期： 2023-04-25 07:49:23
--- 服务器版本： 10.4.18-MariaDB
--- PHP 版本： 8.0.3
+-- 主機： 127.0.0.1
+-- 產生時間： 
+-- 伺服器版本： 10.1.38-MariaDB
+-- PHP 版本： 7.3.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -18,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- 数据库： `cakeshop`
+-- 資料庫： `cakeshop`
 --
 CREATE DATABASE IF NOT EXISTS `cakeshop` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
 USE `cakeshop`;
@@ -26,19 +27,36 @@ USE `cakeshop`;
 -- --------------------------------------------------------
 
 --
--- 表的结构 `feedback`
+-- 資料表結構 `feedback`
 --
 
 CREATE TABLE `feedback` (
   `feedback_id` varchar(20) NOT NULL,
-  `email` varchar(20) NOT NULL,
-  `message` varchar(10000) NOT NULL
+  `name` varchar(1000) NOT NULL,
+  `email` varchar(200) NOT NULL,
+  `message` mediumtext NOT NULL,
+  `create_time` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- 傾印資料表的資料 `feedback`
+--
+
+INSERT INTO `feedback` (`feedback_id`, `name`, `email`, `message`, `create_time`) VALUES
+('F0', 'fsdfs', 'df@sfas.com', 'Enter your comments here...', '2023-04-25'),
+('F1', 'fsdfs', 'df@sfas.com', 'Enter your comments here...', '2023-04-25'),
+('F2', 'asdf', 'dfs@dfsf.com', 'adfadf', '2023-04-25'),
+('F3', 'sdf', 'sdf@asdf.com', 'adfasdf', '2023-04-25'),
+('F4', 'sdf', 'sdf@asdf.com', 'adfasdf', '2023-04-25'),
+('F5', 'sdf', 'sdf@asdf.com', 'adfasdf', '2023-04-25'),
+('F6', 'sdf', 'sdf@asdf.com', 'adfasdf', '2023-04-25'),
+('F7', 'asdf', 'asdf@saf.com', 'adsfasdf', '2023-04-25'),
+('F8', 'gggggggggg', 'asdfas@sf.com', 'asdfa', '2023-04-25');
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `product`
+-- 資料表結構 `product`
 --
 
 CREATE TABLE `product` (
@@ -54,7 +72,7 @@ CREATE TABLE `product` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 转存表中的数据 `product`
+-- 傾印資料表的資料 `product`
 --
 
 INSERT INTO `product` (`product_id`, `product_name`, `product_price`, `product_img_path`, `product_description`, `Type`, `quantity_in_stock`, `being_click`, `product_img_path2`) VALUES
@@ -77,7 +95,7 @@ INSERT INTO `product` (`product_id`, `product_name`, `product_price`, `product_i
 -- --------------------------------------------------------
 
 --
--- 表的结构 `transaction`
+-- 資料表結構 `transaction`
 --
 
 CREATE TABLE `transaction` (
@@ -93,17 +111,25 @@ CREATE TABLE `transaction` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 转存表中的数据 `transaction`
+-- 傾印資料表的資料 `transaction`
 --
 
 INSERT INTO `transaction` (`transaction_id`, `user_id`, `product_id`, `payment_method`, `quantity`, `total_payment_amount`, `order_time`, `finish_time`, `status`) VALUES
 ('T0', 'gG12345', 'P001', 'unset', 1, 240, '2023-04-24', '2023-04-04', 'NULL'),
-('T1', 'gG12345', 'P002', 'unset', 1, 220, '2023-04-24', '2023-04-04', 'NULL');
+('T1', 'gG12345', 'P002', 'unset', 1, 220, '2023-04-24', '2023-04-04', 'NULL'),
+('T2', 'submitA11', 'P005', 'unset', 1, 190, '2023-04-25', '2023-04-04', 'NULL'),
+('T3', 'submitA11', 'P006', 'unset', 2, 360, '2023-04-25', '2023-04-05', 'NULL'),
+('T4', 'submitA11', 'P005', 'unset', 1, 190, '2023-04-25', '2023-04-04', 'NULL'),
+('T5', 'submitA11', 'P006', 'unset', 2, 360, '2023-04-25', '2023-04-05', 'NULL'),
+('T6', 'submitA11', 'P005', 'unset', 1, 190, '2023-04-25', '2023-04-04', 'NULL'),
+('T7', 'submitA11', 'P006', 'unset', 2, 360, '2023-04-25', '2023-04-05', 'NULL'),
+('T8', 'submitA11', 'P005', 'unset', 1, 190, '2023-04-25', '2023-04-04', 'NULL'),
+('T9', 'ff011121', 'P003', 'unset', 3, 555, '2023-04-28', '2023-04-06', 'NULL');
 
 -- --------------------------------------------------------
 
 --
--- 表的结构 `user`
+-- 資料表結構 `user`
 --
 
 CREATE TABLE `user` (
@@ -117,35 +143,38 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- 转存表中的数据 `user`
+-- 傾印資料表的資料 `user`
 --
 
 INSERT INTO `user` (`user_id`, `password`, `person_name`, `birthday`, `gender`, `email`, `phone_number`) VALUES
 ('aaaaA1', '$2y$10$nE.OSVXL2jXIJcnEl5u4s.BwMk2F6R5LwryxgxxgPGoNLkOGkET62', 'sdf', '2023-04-06', 'Male', 'dsfa@asdf.com', '112121'),
+('ff011121', '$2y$10$zRFOZYY.tucAbc6zewOOiOhm0QWnecoVFK.LbO7nUuBIhinC/D1/6', 'sdfasf', '2023-03-28', 'Male', 'sf@asdf.com', '121212'),
 ('ffff', '$2y$10$EX8wU5WJj/g91RKClxag6OrNnUqi2ljsS8KA1pj/4wNEnyonw2B1C', 'jk', '2023-04-04', 'Male', 'asdf@afa.com', '8888888'),
 ('ggwp12345', '$2y$10$OEXKTSpxMHBKeG1n1QO1SOia.dUMX50QJidfoZZ9Rm8kNIwAVBGru', 'asdf', '2023-03-27', 'Male', 'sadf@sdaf.com', '1111'),
+('ggwpG123', '$2y$10$XiutrdJnzdDGMzm6lhWg/OMlPilKmBAEfF/nSGlhqYc/OaanW7MhG', 'fsdfsdf', '2023-04-04', 'Female', 'fsd@sdaf.com', '3212312'),
 ('jjjjJ1', '$2y$10$r4Q90E95WfXKmd9ck7oiE.RYjBEo6M/E22Ed7/dppm9ckWXbSPIbq', 'sadfa', '2023-03-29', 'Male', 'sdf@asdf.com', '412312'),
-('submitA1', '$2y$10$i0IeoaLrBhh8UQUf.O4LUeFxs5sHGaJC6Lyz3K3Q/UHh3NOtlHII2', 'iiiii', '2023-04-20', 'Female', 'fffff@dsaf.com', '00000000');
+('submitA1', '$2y$10$i0IeoaLrBhh8UQUf.O4LUeFxs5sHGaJC6Lyz3K3Q/UHh3NOtlHII2', 'iiiii', '2023-04-20', 'Female', 'fffff@dsaf.com', '00000000'),
+('submitA11', '$2y$10$YdHGb8AjlS5UjOrPvTYi.uWOut.B1r4jpAKoikid.XagiJBxoT6ee', 'asdas', '2023-03-29', 'Female', 'dsf@dsaf.com', '121212');
 
 --
--- 转储表的索引
+-- 已傾印資料表的索引
 --
 
 --
--- 表的索引 `feedback`
+-- 資料表索引 `feedback`
 --
 ALTER TABLE `feedback`
   ADD PRIMARY KEY (`feedback_id`);
 
 --
--- 表的索引 `transaction`
+-- 資料表索引 `transaction`
 --
 ALTER TABLE `transaction`
   ADD PRIMARY KEY (`transaction_id`,`user_id`,`product_id`),
   ADD UNIQUE KEY `transaction_id` (`transaction_id`);
 
 --
--- 表的索引 `user`
+-- 資料表索引 `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`user_id`),
