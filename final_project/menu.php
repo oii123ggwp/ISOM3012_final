@@ -5,7 +5,6 @@
 
 <div class="icon">
 <?php
-//check if there is a user login. There will be different image wiht a href showing on the page.
   if(!$_SESSION["login_session"])
   {
     echo "<a href='login.php'><img src='image/icon4.png' title='login'></a>";
@@ -17,7 +16,7 @@
   ?>
 <a href="contact_us.php"><img src="image/icon3.png" title="message" ></a>
   <a href="shopping_cart.php"><img src="image/icon2.png" title="shopping cart"></a>
-  <a href="user.php"><img src="image/icon1.png" title="user"></a>
+  <a href="user_test.php"><img src="image/icon1.png" title="user"></a>
   <a href="menu.php"><img src="image/icon10.png" title="menu"></a>
 
   </div>

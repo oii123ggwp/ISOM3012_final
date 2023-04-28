@@ -42,9 +42,7 @@ if ($user_id != "" && $password != "") {
       if (password_verify($password, $row["password"])){
       // if matched, specify session variable login_session as true
         $_SESSION["login_session"] = true;
-        $_SESSION["user_id"] = $user_id;
-        header("Location: menu.php");
-      }
+        header("Location: menu.php");}
       else
       {
         $error_msg = "wrong user password!<br/>";
