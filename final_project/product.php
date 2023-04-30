@@ -58,14 +58,21 @@ if(!$_SESSION["login_session"])
 <span style="font-family:cursive;color:#A69B84;font-size:40px;">OUR PRODUCT<br></span>
 </div>
 
-<div class="pic">
-<br>
-<img src="image/cake3.jpg">
-</div>
-<div class = "search">
+
+<div class = "search"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
    <img src="image/search.png" width="20px"; height="17px";></a>
    <span style="color:#b7b08a;font-size:23px;">Quick search:&nbsp;&nbsp;</span>
    <input type = "text" id = "search_product"  name = "search_product" onkeyup ="showSuggestion(this.value)">
+   <br><br>
 </div>
 <div class='product' id = "search_result">
    <?php
@@ -78,6 +85,7 @@ if(!$_SESSION["login_session"])
                  echo "<h5>$".$row['product_price']."/pc</h5>";
                  echo "</div>";
          }     
+       
          mysqli_free_result($result); // release memory spaces
      }    
    ?>

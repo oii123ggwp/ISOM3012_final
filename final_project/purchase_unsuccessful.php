@@ -5,7 +5,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
     <title>Purchase Unsuccessful</title>
-    <link rel="stylesheet" href="purchase_unsuccessful.css">
+    <link rel="stylesheet" type="text/css" href="purchase_unsuccessful.css">
 </head>
 <?php session_start();
 if(!isset($_SESSION["login_session"]))
@@ -28,7 +28,7 @@ if(!isset($_SESSION["login_session"]))
     echo "<a href='logout.php'><img src='image/icon9.png' title='logout'></a>";
   }
   ?>
-<a href="contact_us.php"><img src="image/icon3.png" title="message" ></a>
+  <a href="contact_us.php"><img src="image/icon3.png" title="message" ></a>
   <a href="shopping_cart.php"><img src="image/icon2.png" title="shopping cart"></a>
   <a href="user.php"><img src="image/icon1.png" title="user"></a>
   <a href="menu.php"><img src="image/icon10.png" title="menu"></a>

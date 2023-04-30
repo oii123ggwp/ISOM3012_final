@@ -1,7 +1,7 @@
 <!--    shopping_cart.php   -->
 
 <!-- Authors: ZHENG BOWEN Owen. 
-     Modified by: FONG IEK KIN -->
+     PHP Modified by: FONG IEK KIN -->
 <?php
 session_start();
 $DATABASE_HOST = 'localhost';
@@ -70,34 +70,7 @@ foreach($result_rows as $record)//get one record from the result
 </head>
 
 <body>
-    <!--
-    <header>
-        <div class="content-wrapper">
-            <div class="logo">
-                <img src="image/logo.png" width=100px height=100px>
-            </div>
-            <h1>Home Bakery</h1>
-            <nav>
-                <a href="menu.php">Home</a>
-                <a href="product.php">Products</a>
-            </nav>
-            <div class="icon">
-                <a href=""><img src="image/icon3.png" title="message"></a>
-                <a href="shopping_cart.php"><img src="image/icon2.png" title="shopping cart"></a>
-                <a href=""><img src="image/icon1.png" title="user"></a>
-                <?php
-                /*if (isset($_SESSION['user_id'])) {
-                    echo "<a href='login.php'><img src='image/icon4.png' title='login'></a>";
-                }else
-                {
-                  echo "<a href='logout.php'><img src='image/icon9.png' title='logout'></a>";
-                }
-                */    
-                ?>
-            </div>
-        </div>
-    </header>
-            -->
+    
 <main class="shoppingcart">
 
 <div class="icon1">  
@@ -126,7 +99,7 @@ foreach($result_rows as $record)//get one record from the result
             <tbody>
                 <?php if (empty($shopping_cart_products)): ?>
                 <tr>
-                    <td colspan="5" style="text-align:center;">You have no products added in your Shopping Cart</td>
+                    <td colspan="7" style="text-align:center;"><br>You have no products added in your Shopping Cart<br></td>
                 </tr>
                 <?php else: ?>
                 <?php foreach ($shopping_cart_products as $product): ?>
@@ -147,7 +120,7 @@ foreach($result_rows as $record)//get one record from the result
                     </td>
                     
                     <td class="deliver">
-                        <input type="date" id="deliver_date" name="deliver_date_<?=$product['product_id']?>" min="<?php echo date("Y-m-d", $now_plus_two_days) ?>" value = <?php echo date("Y-m-d", $now_plus_two_days) ?> required><!---->
+                        <input type="date" id="deliver_date"  name="deliver_date_<?=$product['product_id']?>" min="<?php echo date("Y-m-d", $now_plus_two_days) ?>" value = <?php echo date("Y-m-d", $now_plus_two_days) ?> required><!---->
                     </td>
                     <td class="requirement">
                         <input class="req" type="text">
@@ -172,6 +145,10 @@ foreach($result_rows as $record)//get one record from the result
             <span class="text"> (10:00-20:00)</span>
                
         </div> -->
+        <div class="backbuttons">
+            <input type="button" onclick="window.location = 'product.php'" value="Product Page" name="BackToProduct">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="button" onclick="window.location = 'search_product.php'" value="Search Product" name="BackToSearch">
+        </div>
         <div class="buttons">
             <input type="submit" value="Place Order" name="placeorder">
         </div>

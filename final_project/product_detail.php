@@ -1,9 +1,10 @@
 <!-- 
    Author: 
         php part: FONG IEK KIN BC000076
-        data: 
         
-   Program description: this page is used to display the product
+        PDO & JS & modal:  ZHENG BO WEN  Owen  BC005351
+        
+   Program description: this page is used to display the product detail from product page
 -->
 <?php
 // set up MySQL database connection 

@@ -8,10 +8,27 @@ body{
     height: 100vh;
     /* 弹性布局 居中 */
     display: flex;
-    background: url("purchase_successful.jpg") no-repeat center center;
+   
     background-size: cover;
     background-attachment: fixed;
 }
+
+.icon img{ 
+    float: right;
+    margin-left: 18px;
+    margin-right: 18px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width:18px;
+    height:18px;
+    opacity: 0.6;
+  
+  }
+  
+  .icon img:hover{ 
+    opacity: 1.0;
+  }
+
 .container1{
     /* 绝对定位 */
     position: absolute;

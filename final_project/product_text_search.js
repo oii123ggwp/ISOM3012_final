@@ -10,10 +10,11 @@ var xmlHttp;
       
 function showSuggestion(str)
 {
+   empty = false
    if (str.length == 0)
    {
       document.getElementById("search_product").innerHTML="";
-      return;
+      empty = true
    }
    else
       xmlHttp = new XMLHttpRequest();
@@ -22,11 +23,20 @@ function showSuggestion(str)
       alert ("Your browser does not support AJAX");
       return;
    }
-   var url = "getsuggestion.php";
-   url = url+"?q="+str;
-   xmlHttp.onreadystatechange=stateChanged;
-   xmlHttp.open("GET",url,true);
-   xmlHttp.send();
+   if(empty){
+      var url = "getsuggestion_empty.php";
+      url = url+"?q="+str;
+      xmlHttp.onreadystatechange=stateChanged;
+      xmlHttp.open("GET",url,true);
+      xmlHttp.send();
+   }
+   else{
+      var url = "getsuggestion.php";
+      url = url+"?q="+str;
+      xmlHttp.onreadystatechange=stateChanged;
+      xmlHttp.open("GET",url,true);
+      xmlHttp.send();
+   }
 }
 
 function stateChanged()

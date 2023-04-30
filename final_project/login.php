@@ -47,12 +47,13 @@ if ($user_id != "" && $password != "") {
       }
       else
       {
-        $error_msg = "wrong user password!<br/>";
+        $error_msg = "Wrong user password!";
+        echo "<script type='text/javascript'>alert('$error_msg');</script>"; 
         $_SESSION["login_session"] = false;
       }
    } else {  // login fails
-      $error_msg = "<center><font color='red'>wrong user name!<br/></font>";
-
+      $error_msg = "Wrong user name!";
+      echo "<script type='text/javascript'>alert('$error_msg');</script>"; 
       $_SESSION["login_session"] = false;
    }
    mysqli_close($link);    
@@ -72,11 +73,9 @@ if ($user_id != "" && $password != "") {
 <div class="box">
    <br><br>
    <div class="left"></div>
-   
    <div class="right">
     <h4>Login</h4>
     <form action="login.php" method="post">
-    <?php echo $error_msg ?>
     <input class="account" type="text" placeholder="Username"  name="user_id" value = <?php echo $user_id?>>
     <input class="account" type="password" placeholder="Password" name="Password">
     <input class="Login" type="submit" value="Login">

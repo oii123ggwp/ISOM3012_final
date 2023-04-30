@@ -26,7 +26,7 @@
 		<div class="box_div" id="box_one">
 			<a href="#box_one">1. How long should I place the order prior to the pick-up date?</a>
 			<span></span>
-			<p style="line-height: 30px;">All cakes in the shopping menu have an indication of when they need to be made, so please pay attention to the specific time and allow for the time needed to make the cake before placing your order.</p>
+			<p style="line-height: 30px;">All cakes on the shopping menu need to be booked 2 days in advance, please pay attention to the time of booking cake! </p>
 		</div>
 		<div class="box_div" id="box_two">
 			<a href="#box_two">2. Can I make changes to the order after I made my purchase?</a>

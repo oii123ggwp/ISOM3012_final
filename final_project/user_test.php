@@ -65,10 +65,9 @@ try {
     // If there is an error with the connection, stop the script and display the error.
     exit('Failed to connect to database!');
 }
-$UID = $_SESSION["user_id"];
 // Prepare statement and execute, prevents SQL injection
 $stmt = $pdo->prepare('SELECT * FROM user WHERE user_id = ?');
-$stmt->execute([$UID]);
+$stmt->execute([$user_id]);
 // Fetch the user from the database and return the result as an Array
 $user = $stmt->fetch(PDO::FETCH_ASSOC);
 // Check if the user exists (array is not empty)
@@ -76,6 +75,7 @@ if (!$user) {
     // Simple error to display if the id for the user doesn't exists (array is empty)
     exit('user does not exist!');
 }
+
 
 ?>
 <head>
@@ -157,7 +157,7 @@ if (!$user) {
     }
     function pass_valid(psd) { //function used to validate password 6 to 15 characters    
       //which contain at least one numeric digit, one uppercase and one lowercase letter
-      var psd = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+      var psd = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,15}$/;
       if (pass.value.match(psd)) {
         return true;
       } else { // otherwise will display alert window and focus
@@ -272,11 +272,10 @@ if (!$user) {
    <div class="infor">
 
     Password:&ensp;&thinsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="password" id="pass" name="pass" size="23" value=""><p style="line-height: 0.4; font-size:x-small;font-weight:300;color:#efa238;">(at least 1 number, 1 Uppercase letter and 1 lowercase letter)</p><br>
+    <input type="password" id="pass" name="pass" size="23" value="<?=$user['password']?>"><p style="line-height: 0.4; font-size:x-small;font-weight:300;color:#efa238;">(at least 1 number, 1 Uppercase letter and 1 lowercase letter)</p><br>
 
     Password confirmation:&thinsp;&thinsp;&thinsp;
     <input type="password" id="passcon" name="passcon" size="23"><br><br>
-  
     Name:&ensp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" id="name" name="name" size="18" value="<?=$user['person_name']?>" ><br><br>
     Birthday:&ensp;&nbsp;&nbsp;&nbsp;&thinsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -289,7 +288,8 @@ if (!$user) {
     Email:&thinsp;&thinsp;&ensp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <input type="text" id="email" name="email" size="28" value="<?=$user['email']?>"><br><br>
     </div>
-    <input class="modify" type="submit" name="submit" type="submit" value="Modify">
+    <input class="modify" type="submit" name="submit" type="submit" value="Modify"><input class="cancel" type="submit" name="Cancel" type="submit" value="Cancel">
+
 
 </div>
 </div>

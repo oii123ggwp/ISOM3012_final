@@ -9,6 +9,7 @@ session_start();
 $user_id = "";
 $error_msg = "";
 
+
 if(isset($_POST['submit'])){
 // obtain form data
   if ( isset($_POST["user"]) )
@@ -18,7 +19,7 @@ if(isset($_POST['submit'])){
   if ($user_id != "") {
    // connect to database
     $link = mysqli_connect("localhost","root",
-                            "A12345678","cakeshop")
+                            "root","cakeshop")
                   or die("Cannot open MySQL database connection!<br/>");
 
 
@@ -31,6 +32,7 @@ if(isset($_POST['submit'])){
     // check if login data matched with database
     if ( $total_records == 0 ) {
       $password = $_POST["pass"];
+      $passcon = $_POST["passcon"];
       $hash = password_hash($password, PASSWORD_DEFAULT);
       
       //create a string about a sql statement which is used to insert a user record
@@ -38,11 +40,28 @@ if(isset($_POST['submit'])){
       $add_stmt = $link->prepare($insert_sql);
       $add_stmt->bind_param("sssssss",$_POST["user"],$hash,$_POST["name"],$_POST["birthday"],$_POST["gender"],$_POST["email"],$_POST["phone_number"]);
     
-      $add_stmt->execute();
-    
+      $res=$add_stmt->execute();
+      if($res==false){
+          $_SESSION['user']=$_POST["user"];
+          $_SESSION['pass']=$password;
+          $_SESSION['passcon']=$passcon;
+          $_SESSION['name']=$_POST["name"];
+          $_SESSION['birthday']=$_POST["birthday"];
+          $_SESSION['gender']=$_POST["gender"];
+          $_SESSION['email']=$_POST["email"];
+          $_SESSION['phone_number']=$_POST["phone_number"];
+      }else{
+          $_SESSION['user']='';
+          $_SESSION['pass']='';
+          $_SESSION['passcon']='';
+          $_SESSION['name']='';
+          $_SESSION['birthday']='';
+          $_SESSION['gender']='';
+          $_SESSION['email']='';
+          $_SESSION['phone_number']='';
+      }
       $add_stmt->close();
       $link->close();
-    
       header("Location: menu.php");
     } 
     else {  // login fails
@@ -72,23 +91,24 @@ if(isset($_POST['submit'])){
    <div class="infor">
     <form>
     Username:&ensp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" id="user" name="user" size="20" placeholder="Letters and Numbers Only"><br><?php echo $error_msg ?><br>
+    <input type="text" id="user" name="user" size="20" value="<?php if(isset($res)){echo $_SESSION['user'];}?>" placeholder="Letters and Numbers Only"><br><?php echo $error_msg ?><br>
     Password:&ensp;&thinsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="password" id="pass" name="pass" size="23" placeholder="6-15 characters"><p style="line-height: 0.4; font-size:x-small;font-weight:300;color:#E05273;">(at least 1 number, 1 Uppercase letter and 1 lowercase letter)</p><br>
+    <input type="password" id="pass" name="pass" size="23" value="<?php if(isset($res)){echo $_SESSION['pass'];}?>" placeholder="6-15 characters">
+        <p style="line-height: 0.4; font-size:x-small;font-weight:300;color:#E05273;">(at least 1 number, 1 Uppercase letter and 1 lowercase letter)</p><br>
 
     Password confirmation:&thinsp;&thinsp;&thinsp;
-    <input type="password" id="passcon" name="passcon" size="23"><br><br>
+    <input type="password" id="passcon" name="passcon" value="<?php if(isset($res)){echo $_SESSION['passcon'];}?>" size="23"><br><br>
     Name:&ensp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" id="name" name="name" size="18" placeholder="Letters Only"><br><br>
+    <input type="text" id="name" name="name" size="18" value="<?php if(isset($res)){echo $_SESSION['name'];}?>" placeholder="Letters Only"><br><br>
     Birthday:&ensp;&nbsp;&nbsp;&nbsp;&thinsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <input id="birthday" name="birthday" type="date"  max="1111-13-13"><br><br>
+    <input id="birthday" name="birthday" type="date" value="<?php if(isset($res)){echo $_SESSION['birthday'];}?>"  max="1111-13-13"><br><br>
     Gender:&thinsp;&thinsp;&ensp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="radio" name="gender" value="Male"><span>Male</span>
-    <input type="radio" name="gender" value="Female"><span>Female</span><br><br>
+    <input type="radio" name="gender" value="Male"  <?php if(isset($res)){if($_SESSION['gender']=='Male'){ echo "checked"; }}?> ><span>Male</span>
+    <input type="radio" name="gender" value="Female" <?php if(isset($res)){if($_SESSION['gender']=='Female'){ echo "checked";}}?> ><span>Female</span><br><br>
     Phone number:&ensp;&thinsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" id="phone_number" name="phone_number" size="20"><br><br>
+    <input type="text" id="phone_number" value="<?php if(isset($res)){echo $_SESSION['phone_number'];}?>" name="phone_number" size="20"><br><br>
     Email:&thinsp;&thinsp;&ensp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <input type="text" id="email" name="email" size="28"><br><br>
+    <input type="text" id="email" value="<?php if(isset($res)){echo $_SESSION['email'];}?>" name="email" size="28"><br><br>
     </div>
     <input class="signup" type="submit" name="submit" type="submit" value="Sign up">
     </form>
